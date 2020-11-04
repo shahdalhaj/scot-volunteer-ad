@@ -61,3 +61,6 @@ typings/
 .next
 
 *.sqlite3
+
+# ignore  any file under the server directly. to remove untracked 75 uneeded files  
+server/
