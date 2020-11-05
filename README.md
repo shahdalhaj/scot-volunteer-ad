@@ -3,6 +3,15 @@
 Clone this project on your local machine.
 After cloning the project, we will create the local database that the project will use.
 
+
+# This is Volunteer-ad project by Refmentors team #
+~~ Team members :
+
+~ Mohammed Malhallaq 
+~ Razan Kal Omar
+~ Shahd Alhaj
+
+
 ## Database
 
 - Open the terminal, and `cd` into `server`
