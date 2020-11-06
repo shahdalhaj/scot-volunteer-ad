@@ -8,7 +8,7 @@ module.exports = {
     "react/prop-types": 0,
     "no-console": 1
   },
-  plugin: ["react", "import", "jsx-a11y"],
+  plugins: ["react", "import", "jsx-a11y"],
   parserOptions: {
     ecmaVersion: 2017
   },
@@ -16,7 +16,7 @@ module.exports = {
     node: true,
     es6: true
   },
-  setting: {
+  settings: {
     react: {
       version: "detect"
     }
