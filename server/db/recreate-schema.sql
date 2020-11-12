@@ -1,4 +1,5 @@
 -- Drop tables in case they already exist
+-- Drop tables in case they already exist
 DROP TABLE if exists users;
 DROP TABLE IF EXISTS charity CASCADE;
 DROP TABLE IF EXISTS topics CASCADE;
@@ -17,17 +18,9 @@ CREATE TABLE users (
 );
 
 
-
-CREATE TABLE charity(
-   charity_id INT GENERATED ALWAYS AS IDENTITY,
-   customer_name VARCHAR(255) NOT NULL,
-   PRIMARY KEY(charity_id)
-);
-
 CREATE TABLE topics(
    topic_id INT GENERATED ALWAYS AS IDENTITY,
    topic_name VARCHAR(255) NOT NULL,
-   document_name VARCHAR(255),
    PRIMARY KEY(topic_id)
 );
 
@@ -44,7 +37,7 @@ CREATE TABLE assessments(
 CREATE TABLE questions(
    question_id INT GENERATED ALWAYS AS IDENTITY,
    assessment_id INT NOT NULL,
-   question_text VARCHAR(5000) NOT NULL,
+   question_text VARCHAR(255) NOT NULL,
    PRIMARY KEY(question_id),
    CONSTRAINT fk_assessments
       FOREIGN key(assessment_id) 
@@ -55,8 +48,8 @@ CREATE TABLE questions(
 CREATE TABLE choices(
    choice_id INT GENERATED ALWAYS AS IDENTITY,
    question_id INT NOT NULL,
-   choice_text VARCHAR(5000) NOT NULL,
-   correct_choice BOOLEAN,
+   choice_text VARCHAR(150) NOT NULL,
+  isCorrect BOOLEAN,
    PRIMARY KEY(choice_id),
    CONSTRAINT fk_choices
       FOREIGN key(question_id) 
@@ -68,6 +61,7 @@ CREATE TABLE choices(
 CREATE TABLE volunteers(
    volunteer_id INT GENERATED ALWAYS AS IDENTITY,
    volunteer_name VARCHAR(255) NOT NULL,
+
    email VARCHAR(255) NOT NULL,
    PRIMARY KEY(volunteer_id)
    
@@ -76,14 +70,18 @@ CREATE TABLE volunteers(
 CREATE TABLE volunteer_assessments(
    vol_assessment_id INT GENERATED ALWAYS AS IDENTITY,
    volunteer_id INT NOT NULL,
-   choice_text VARCHAR(10000) NOT NULL,
-   assessment_date DATE,
+   assessment_id INT NOT NULL,
    assessment_start TIMESTAMP,
    assessment_end TIMESTAMP,
    PRIMARY KEY(vol_assessment_id),
    CONSTRAINT fk_voulnteers
       FOREIGN key(volunteer_id) 
-	  REFERENCES volunteers(volunteer_id)   
+	  REFERENCES volunteers(volunteer_id),
+       CONSTRAINT fk_assessments_volunteer
+     FOREIGN KEY (assessment_id) 
+     REFERENCES assessments(assessment_id)
+     
+
 );
 
 CREATE TABLE volunteer_answers(
@@ -98,7 +96,6 @@ CREATE TABLE volunteer_answers(
       FOREIGN key(vol_assessment_id) 
 	  REFERENCES volunteer_assessments(vol_assessment_id)
 );
-
 
 
 
