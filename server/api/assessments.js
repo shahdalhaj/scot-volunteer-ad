@@ -13,5 +13,17 @@ router.get("/", (req, res) => {
 			res.send(500);
 		});
 });
+router.get("/:assessment_id",(req, res)=> {
+    const assessmentId =Number(req.params.assessment_id);
+  assessmentDb
+  .getAssessmentById(assessmentId)
+    .then((data) => {
+        res.send(data);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.send(500);
+    });
 
+});
 module.exports = router;
