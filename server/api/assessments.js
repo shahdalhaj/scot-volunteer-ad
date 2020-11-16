@@ -6,11 +6,11 @@ router.get("/", (req, res) => {
 	assessmentDb
 		.getAllAssessments()
 		.then((data) => {
-			res.send(data);
+			res.json(data);
 		})
 		.catch((err) => {
 			console.error(err);
-			res.send(500);
+			res.json(500);
 		});
 });
 router.get("/:assessment_id",(req, res)=> {
@@ -18,11 +18,11 @@ router.get("/:assessment_id",(req, res)=> {
   assessmentDb
   .getAssessmentById(assessmentId)
     .then((data) => {
-        res.send(data);
+        res.json(data);
     })
     .catch((err) => {
         console.error(err);
-        res.send(500);
+        res.json(500);
     });
 
 });
