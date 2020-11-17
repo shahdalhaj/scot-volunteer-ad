@@ -4,6 +4,7 @@ import "./index.css";
 import Home from "./components/Home";
 import About from "./components/About";
 import Status from "./components/Status";
+import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Routes = () => {
@@ -33,6 +34,7 @@ const Routes = () => {
           <Route path="/about/" component={About} />
           <Route path="/status/" component={Status} />
         </div>
+        <Footer />
       </div>
     </Router>
   );
