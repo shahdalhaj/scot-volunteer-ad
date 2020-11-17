@@ -4,11 +4,15 @@ import "./index.css";
 import Home from "./components/Home";
 import About from "./components/About";
 import Status from "./components/Status";
+import "semantic-ui-css/semantic.min.css";
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { AppBar, Toolbar } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
+
+
 
 const Routes = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
