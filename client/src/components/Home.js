@@ -4,10 +4,8 @@ import Login from "./Login";
 
 const Home = () => {
   return (
-    <div>
-      <header className="home-header">
-        <Login />
-      </header>
+    <div className="wrapper">
+      <Login />
     </div>
   );
 };
