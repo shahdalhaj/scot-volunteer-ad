@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const assessmentDb = require("../services/database/assessments");
+const passport = require("passport");
 
-router.get("/", (req, res) => {
+router.get("/",passport.authenticate("jwt", { session: false }), (req, res) => {
 	assessmentDb
 		.getAllAssessments()
 		.then((data) => {
@@ -13,7 +14,8 @@ router.get("/", (req, res) => {
 			res.json(500);
 		});
 });
-router.get("/:assessment_id",(req, res)=> {
+router.get("/:assessment_id", passport.authenticate("jwt", { session: false }),(req, res)=> {
+
     const assessmentId =Number(req.params.assessment_id);
   assessmentDb
   .getAssessmentById(assessmentId)
@@ -26,4 +28,6 @@ router.get("/:assessment_id",(req, res)=> {
     });
 
 });
+
+
 module.exports = router;
