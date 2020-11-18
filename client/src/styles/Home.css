@@ -1,4 +1,3 @@
-
 .wrapper {
   background-color: white;
   display: flex;
@@ -7,6 +6,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   border-radius: 3rem;
-  min-height: 70vh;
+  min-height: 60vh;
   margin: 2rem;
 }

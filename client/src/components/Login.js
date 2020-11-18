@@ -15,9 +15,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: "60vh",
-    margin: "2rem",
-    borderRadius: "5rem"
+    height: "60vh"
   },
   image: {
     backgroundImage:
@@ -54,11 +52,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignInSide() {
+function Login() {
   const classes = useStyles();
 
   return (
-    <Grid container component="main" xs={12} sm={7} className={classes.root}>
+    <Grid container component="main" xs={12} sm={8} className={classes.root}>
       <CssBaseline />
       <Grid
         item
@@ -117,7 +115,6 @@ export default function SignInSide() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
             />
             <TextField
               variant="outlined"
@@ -166,3 +163,5 @@ export default function SignInSide() {
     </Grid>
   );
 }
+
+export default Login;
