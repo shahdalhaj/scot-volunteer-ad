@@ -3,6 +3,15 @@
 Clone this project on your local machine.
 After cloning the project, we will create the local database that the project will use.
 
+
+# This is Volunteer-ad project by Refmentors team #
+~~ Team members :
+
+~ Mohammed Malhallaq 
+~ Razan Kal Omar
+~ Shahd Alhaj
+
+
 ## Database
 
 - Open the terminal, and `cd` into `server`
@@ -23,6 +32,9 @@ After cloning the project, we will create the local database that the project wi
     GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO app_user;
     ```
 - `npm run recreate-db:local` (this will create and populate your new team's DB)
+
+### Database schema 
+![img](docs/Database_schema.png)
 
 ## Test it all works
 

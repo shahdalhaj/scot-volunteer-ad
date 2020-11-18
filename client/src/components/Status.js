@@ -17,7 +17,9 @@ const Status = () => {
   return (
     <div>
       <header className="app-header">
-        <label>Database health check (querying users in DB):</label>
+        <label htmlFor="dbHealthCheck">
+          Database health check (querying users in DB):
+        </label>
         {!users.length ? (
           <p>No users</p>
         ) : (
