@@ -1,12 +1,12 @@
 import React from "react";
 import "../styles/Home.css";
+import Login from "./Login";
 
 const Home = () => {
   return (
-    <div>
-      <header className="home-header">
-        <h1>Volunteer assessment Project</h1>
-      </header>
+    <div className="wrapper">
+      <Login />
+
     </div>
   );
 };
