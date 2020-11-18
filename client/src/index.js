@@ -4,8 +4,7 @@ import "./index.css";
 import Home from "./components/Home";
 import About from "./components/About";
 import Status from "./components/Status";
-import "semantic-ui-css/semantic.min.css";
-
+import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { AppBar, Toolbar } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
@@ -98,6 +97,7 @@ const Routes = () => {
           <Route path="/about/" component={About} />
           <Route path="/status/" component={Status} />
         </div>
+        <Footer />
       </div>
     </Router>
   );
