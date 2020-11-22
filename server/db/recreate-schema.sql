@@ -24,6 +24,9 @@ CREATE TABLE blocks(
    PRIMARY KEY( block_id)
 );
 
+
+
+
 CREATE TABLE topics(
    topic_id INT GENERATED ALWAYS AS IDENTITY,
    topic_name VARCHAR(255) NOT NULL,
