@@ -81,6 +81,7 @@ CREATE TABLE volunteer_topic(
 CREATE TABLE volunteer_answers(
    volunteer_topic_id INT NOT NULL,
      question_id INT NOT NULL,
+     answer VARCHAR(255) not null,
    CONSTRAINT fk_voulnteer_topic
       FOREIGN key( volunteer_topic_id) 
 	  REFERENCES volunteer_topic( volunteer_topic_id),
