@@ -25,8 +25,7 @@ const createNewTopic=( newTopicName ,documentName, documentLink)=> {
 };
 
 const getAllQuestions = (id) => {
-
-	return pool.query("select * from questions where topic_name  = $1" ,[id])
+	return pool.query("select * from questions where topic_id = $1" ,[id])
 		.then((result) => result.rows);
 };
 
