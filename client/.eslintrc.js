@@ -7,7 +7,7 @@ module.exports = {
   rules: {
     "react/prop-types": 0,
     "no-console": 1,
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": "off",
   },
   plugins: ["react", "import", "jsx-a11y"],
   parserOptions: {
