@@ -73,7 +73,6 @@ function Login() {
         const token = data.token;
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(data.user));
-        document.location.reload();
       })
       .catch(() => {
         setError(true);
