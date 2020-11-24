@@ -29,9 +29,19 @@ const getAllQuestions = (id) => {
 		.then((result) => result.rows);
 };
 
+const createNewQuestion =( id, newQuestion)=> {
+
+
+	const query = "INSERT INTO questions (topic_id, question_text) VALUES ($1,$2)";
+
+	return pool
+		.query(query, [id, newQuestion]);
+};
 
 module.exports = {
 	getAllTopics,
 	getTopicById,
 	createNewTopic,
-	getAllQuestions };
+	getAllQuestions,
+	createNewQuestion,
+};
