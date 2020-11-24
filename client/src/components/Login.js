@@ -180,6 +180,7 @@ function Login() {
                 variant="contained"
                 color="secondary"
                 className={classes.submit}
+                disabled
               >
                 Sign Up
               </Button>
