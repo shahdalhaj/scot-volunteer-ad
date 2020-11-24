@@ -16,19 +16,16 @@ router.get("/",passport.authenticate("jwt", { session: false }), (req, res) => {
 });
 router.get("/:assessment_id", passport.authenticate("jwt", { session: false }),(req, res)=> {
 
-	const assessmentId =Number(req.params.assessment_id);
-	assessmentDb
-		.getAssessmentById(assessmentId)
-		.then((data) => {
-			res.json(data);
-		})
-
-
-
-		.catch((err) => {
-			console.error(err);
-			res.json(500);
-		});
+    const assessmentId =Number(req.params.assessment_id);
+  assessmentDb
+  .getAssessmentById(assessmentId)
+    .then((data) => {
+        res.json(data);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.json(500);
+    });
 
 });
 
