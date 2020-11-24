@@ -6,7 +6,6 @@ import About from "./components/About";
 import Status from "./components/Status";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
-// import Login from "./components/auth";
 import {
   BrowserRouter as Router,
   Route,
@@ -44,19 +43,6 @@ const Routes = () => {
       )}
     </>
   );
-  // {
-  //   // console.log(children);
-  //   // console.log(localStorage.getItem("token"));
-
-  //   // return (
-  //   //   <Route
-  //   //     {...rest}
-  //   //     render={() =>
-  //   //       >
-  //   //     }
-  //   //   ></Route>
-  //   // );
-  // };
 
   return (
     <Router>
