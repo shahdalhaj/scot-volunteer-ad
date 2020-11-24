@@ -71,8 +71,6 @@ function Login() {
     signApi(email, password)
       .then(data => {
         const token = data.token;
-        // console.log(token);
-
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(data.user));
         document.location.reload();
@@ -126,6 +124,7 @@ function Login() {
               supports refugees and vulnerable migrants to improve their
               employment prospects and get jobs
             </Typography>
+            {error ? <div>Wrong information. Try again</div> : null}
           </div>
         </Grid>
         <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
@@ -185,10 +184,9 @@ function Login() {
                 Sign Up
               </Button>
 
-              {error ? <div>Wrong information. Try again</div> : null}
-
               <Grid container>
                 <Grid item xs>
+                  {error ? <div>Wrong information. Try again</div> : null}
                   <Link href="#" variant="body2">
                     Forgot password?
                   </Link>
