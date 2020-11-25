@@ -31,11 +31,12 @@ router.get("/:topic_id", passport.authenticate("jwt", { session: false }),(req, 
 
 
 router.post("/create", function(req, res) {
-	console.log("work-create");
-
 	const newTopicName = req.body.topic_name;
 	const documentName = req.body.document_name;
 	const documentLink = req.body.document_link;
+	if(!newTopicName){
+		return res.status(400).send("Could you please enter the topic name");
+	}
 	topicDb
 		.createNewTopic(newTopicName ,documentName, documentLink )
 		.then(() => res.send("Topic created!"))
