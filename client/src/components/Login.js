@@ -67,7 +67,8 @@ function Login() {
       setPassword(event.target.value);
     }
   };
-  const signIn = () => {
+  const signIn = e => {
+    e.preventDefault();
     signApi(email, password)
       .then(data => {
         const token = data.token;
@@ -123,7 +124,6 @@ function Login() {
               supports refugees and vulnerable migrants to improve their
               employment prospects and get jobs
             </Typography>
-            {error ? <div>Wrong information. Try again</div> : null}
           </div>
         </Grid>
         <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
@@ -134,6 +134,13 @@ function Login() {
             <Typography component="h1" variant="h5">
               Log in
             </Typography>
+
+            {error ? (
+              <Typography variant="subtitle2" color="error">
+                Please Enter a valid username and password! Try again.
+              </Typography>
+            ) : null}
+
             <form className={classes.form} noValidate>
               <TextField
                 variant="outlined"
