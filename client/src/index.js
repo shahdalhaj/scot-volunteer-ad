@@ -5,13 +5,23 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Status from "./components/Status";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Login from "./components/Login";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 import { AppBar, Toolbar } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
 
-
+const logout = e => {
+  e.preventDefault();
+  localStorage.removeItem("token");
+  document.location.reload();
+};
 
 const Routes = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -23,6 +33,16 @@ const Routes = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const SecuredRoute = props => (
+    <>
+      {localStorage.getItem("token") ? (
+        props.children
+      ) : (
+        <Redirect to="/login" />
+      )}
+    </>
+  );
 
   return (
     <Router>
@@ -48,7 +68,6 @@ const Routes = () => {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>
-                  {" "}
                   <Link
                     className="nav-link"
                     style={{ color: "#ff7a3dfd", backgroundColor: "white" }}
@@ -67,7 +86,6 @@ const Routes = () => {
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                  {" "}
                   <Link
                     className="nav-link"
                     style={{ color: "#ff7a3dfd", backgroundColor: "white" }}
@@ -76,6 +94,37 @@ const Routes = () => {
                     Status
                   </Link>
                 </MenuItem>
+                {/* login and logout toggles  */}
+                {localStorage.getItem("token") ? (
+                  <MenuItem
+                    onClick={e => {
+                      logout(e);
+                      handleClose();
+                    }}
+                  >
+                    <Link
+                      className="nav-link"
+                      style={{ color: "#ff7a3dfd", backgroundColor: "white" }}
+                      to="/Login"
+                    >
+                      Logout
+                    </Link>
+                  </MenuItem>
+                ) : (
+                  <MenuItem
+                    onClick={() => {
+                      handleClose();
+                    }}
+                  >
+                    <Link
+                      className="nav-link"
+                      style={{ color: "#ff7a3dfd", backgroundColor: "white" }}
+                      to="/Login"
+                    >
+                      Login
+                    </Link>
+                  </MenuItem>
+                )}
               </Menu>
             </div>
             <img
@@ -94,8 +143,11 @@ const Routes = () => {
         </AppBar>
         <div>
           <Route path="/" exact component={Home} />
-          <Route path="/about/" component={About} />
-          <Route path="/status/" component={Status} />
+          <SecuredRoute>
+            <Route exact path="/about/" component={About}></Route>
+            <Route exact path="/status/" component={Status}></Route>
+          </SecuredRoute>
+          <Route path="/login/" component={Login} />
         </div>
         <Footer />
       </div>
