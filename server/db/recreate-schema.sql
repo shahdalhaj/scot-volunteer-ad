@@ -30,8 +30,8 @@ CREATE TABLE blocks(
 CREATE TABLE topics(
    topic_id INT GENERATED ALWAYS AS IDENTITY,
    topic_name VARCHAR(255) NOT NULL,
-   document_name VARCHAR(255) NOT NULL,
-   document_link VARCHAR(255) NOT NULL,
+   document_name VARCHAR(255) ,
+   document_link VARCHAR(255) ,
    PRIMARY KEY(topic_id)
 );
 CREATE TABLE block_topics(
