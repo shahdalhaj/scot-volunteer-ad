@@ -47,13 +47,25 @@ router.post("/create", function(req, res) {
 		});
 });
 
+router.put("/:topic_id", function (req, res) {
+
+	const topicId = req.params.topic_id;
+	const newTopicName = req.body.topic_name;
+	const documentName = req.body.document_name;
+	const documentLink = req.body.document_link;
+	topicDb
+		.updateTopic( newTopicName, documentName, documentLink,topicId)
+		.then(() => res.send("Topic updated!"))
+	    .catch((err) => {
+			console.error(err);
+			res.json(500);
+		});
+});
 router.get("/:topic_id/questions", (req, res) => {
 	const id = req.params.topic_id;
 	topicDb
 		.getAllQuestions(id)
-		.then((data) => {
-			res.json(data);
-		})
+		.then(() => res.send("Topic updated!"))
 		.catch((err) => {
 			console.error(err);
 			res.json(500);
