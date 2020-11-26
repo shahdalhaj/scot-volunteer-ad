@@ -59,7 +59,7 @@ router.get("/:topic_id/questions", (req, res) => {
 			res.json(500);
 		});
 });
-router.post("/:topic_id/createQuestion", (req, res) => {
+router.post("/:topic_id/question", (req, res) => {
 	const newQuestion = req.body.question_text;
 	const id = req.params.topic_id;
 	if(!newQuestion){
