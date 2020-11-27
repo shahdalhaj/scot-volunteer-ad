@@ -10,8 +10,8 @@ import { AppBar, Toolbar } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
-
-
+import Topics from "./components/Topics";
+import CreateTopic from "./components/CreateTopic";
 
 const Routes = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -96,6 +96,8 @@ const Routes = () => {
           <Route path="/" exact component={Home} />
           <Route path="/about/" component={About} />
           <Route path="/status/" component={Status} />
+          <Route path="/topics/" component={Topics} />
+          <Route path="/createtopic/" component={CreateTopic} />
         </div>
         <Footer />
       </div>
