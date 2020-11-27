@@ -59,6 +59,7 @@ router.get("/:topic_id/questions", (req, res) => {
 			res.json(500);
 		});
 });
+
 router.post("/:topic_id/question", (req, res) => {
 	const newQuestion = req.body.question_text;
 	const id = req.params.topic_id;
@@ -67,11 +68,12 @@ router.post("/:topic_id/question", (req, res) => {
 	}
 	topicDb
 		.createNewQuestion(id, newQuestion)
-		.then(() => res.send("Question created!"))
-		.catch((err) => {
-			console.error(err);
-			res.json(500);
-		});
+		.then((data) => res.status(200).json(data))
+		.catch(() => {
+			res.status(500).json({
+				error: "creating a new question failed",
+			});
+		 });
 });
 router.put("/:topic_id/question", function (req, res) {
 	const newQuestion = req.body.question_text;
