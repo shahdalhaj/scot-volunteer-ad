@@ -92,7 +92,9 @@ router.post("/:topic_id/question", (req, res) => {
 	const newQuestion = req.body.question_text;
 	const id = req.params.topic_id;
 	if(!newQuestion){
-		return res.status(400).send("The question can not be empty");
+		res.status(400).json({
+			error: "The question can not be empty",
+		  });
 	}
 	topicDb
 		.createNewQuestion(id, newQuestion)
