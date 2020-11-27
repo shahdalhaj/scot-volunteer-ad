@@ -30,7 +30,14 @@ const getAllQuestions = (id) => {
 };
 
 
+const getQuestionById=(topicId, questionId)=> {
 
+	return pool
+		.query("SELECT * FROM questions WHERE topic_id =$1 and question_id = $2", [topicId, questionId])
+		.then((result) => result.rows[0]);
+
+
+};
 const createNewQuestion =( id, newQuestion)=> {
 
 
@@ -58,6 +65,7 @@ module.exports = {
 	getTopicById,
 	createNewTopic,
 	getAllQuestions,
+	getQuestionById,
 	createNewQuestion,
 	updateQuestion,
 };

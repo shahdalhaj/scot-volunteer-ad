@@ -59,7 +59,20 @@ router.get("/:topic_id/questions", (req, res) => {
 			res.json(500);
 		});
 });
+router.get("/:topic_id/questions/:question_id", (req, res) => {
 
+	const topicId = req.params.topic_id;
+	const questionId = req.params.question_id;
+	topicDb
+		.getQuestionById(topicId, questionId )
+		.then((data) => {
+			res.json(data);
+		})
+		.catch((err) => {
+			console.error(err);
+			res.json(500);
+		});
+});
 router.post("/:topic_id/question", (req, res) => {
 	const newQuestion = req.body.question_text;
 	const id = req.params.topic_id;
