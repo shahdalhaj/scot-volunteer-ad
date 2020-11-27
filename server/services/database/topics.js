@@ -21,7 +21,11 @@ const createNewTopic=( newTopicName ,documentName, documentLink)=> {
 	const query = "INSERT INTO topics (topic_name, document_name, document_link) VALUES ($1,$2,$3)";
 
 	return pool
-		.query(query, [newTopicName ,documentName, documentLink ]);
+		.query(query, [newTopicName ,documentName, documentLink ])
+		.then(() => {
+			return getAllTopics ();
+		});
+
 };
 
 const getAllQuestions = (id) => {
@@ -33,7 +37,7 @@ const updateTopic =( newTopicName, documentName, documentLink, topicId)=> {
 	const query = "UPDATE topics SET  topic_name=$1 , document_name=$2, document_link= $3 where topic_id=$4 ";
 	return pool
 	  .query(query, [ newTopicName, documentName, documentLink, topicId])
-	  .then((result) => result.rows);
+	  .then(() => getTopicById(topicId));
 };
 
 
