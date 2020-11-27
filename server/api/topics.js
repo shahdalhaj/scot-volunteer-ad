@@ -23,13 +23,11 @@ router.get("/:topic_id", passport.authenticate("jwt", { session: false }),(req, 
 			res.json(data);
 		})
 		.catch((err) => {
-			console.error(err);
-			res.json(500);
-		});
+			res.status(500).json({
+				error: "500 Internal Server Error while loading topic page",
+			});
 
 });
-
-
 router.post("/create", function(req, res) {
 	const newTopicName = req.body.topic_name;
 	const documentName = req.body.document_name;
@@ -44,7 +42,7 @@ router.post("/create", function(req, res) {
 		.then((data) => res.status(200).json(data))
 		.catch(() => {
 			res.status(500).json({
-				error: "500 Internal Server Error",
+				error: "Creating a new topi failed",
 			});
 		 });
 });
@@ -63,12 +61,16 @@ router.put("/:topic_id", function (req, res) {
 				error: "500 Internal Server Error",
 			});
 		 });
+
 });
+
 router.get("/:topic_id/questions", (req, res) => {
 	const id = req.params.topic_id;
 	topicDb
 		.getAllQuestions(id)
-		.then(() => res.send("Topic updated!"))
+		.then((data) => {
+			res.json(data);
+		})
 		.catch((err) => {
 			console.error(err);
 			res.json(500);
@@ -83,10 +85,11 @@ router.get("/:topic_id/questions/:question_id", (req, res) => {
 		.then((data) => {
 			res.json(data);
 		})
-		.catch((err) => {
-			console.error(err);
-			res.json(500);
-		});
+		.catch(() => {
+			res.status(500).json({
+				error: "500 Internal Server Error",
+			});
+		 });
 });
 router.post("/:topic_id/question", (req, res) => {
 	const newQuestion = req.body.question_text;
@@ -109,7 +112,9 @@ router.put("/:topic_id/question", function (req, res) {
 	const newQuestion = req.body.question_text;
 	const id = req.params.topic_id;
 	if(!newQuestion){
-		return res.status(400).send("The question can not be empty");
+		res.status(400).json({
+			error: "The question can not be empty",
+		  });
 	}
 	topicDb
 		.updateQuestion( id, newQuestion)
