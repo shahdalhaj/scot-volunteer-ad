@@ -62,12 +62,12 @@ const createNewQuestion =( id, newQuestion)=> {
 		});
 
 };
-const updateQuestion =(id, newQuestion)=> {
-	const query = "UPDATE questions SET  question_text=$1 where topic_id=$2 ";
+const updateQuestion =( newQuestion , id, questionId )=> {
+	const query = "UPDATE questions SET  question_text=$1 where topic_id=$2 and question_id = $3";
 	return pool
-	  .query(query, [newQuestion, id])
+	  .query(query, [newQuestion, id, questionId ])
 	  .then(() => {
-			return  getAllQuestions (id);
+			return  getQuestionById(id, questionId);
 		});
 
 };
