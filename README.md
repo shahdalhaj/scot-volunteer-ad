@@ -34,7 +34,7 @@ After cloning the project, we will create the local database that the project wi
 - `npm run recreate-db:local` (this will create and populate your new team's DB)
 
 ### Database schema 
-![img](docs/Database_schema.png)
+![img](docs/Database-schema.png)
 
 ## Test it all works
 
