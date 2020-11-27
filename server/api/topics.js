@@ -74,18 +74,50 @@ router.get("/:topic_id/questions", (req, res) => {
 			res.json(500);
 		});
 });
+router.get("/:topic_id/questions/:question_id", (req, res) => {
+
+	const topicId = req.params.topic_id;
+	const questionId = req.params.question_id;
+	topicDb
+		.getQuestionById(topicId, questionId )
+		.then((data) => {
+			res.json(data);
+		})
+		.catch((err) => {
+			console.error(err);
+			res.json(500);
+		});
+});
 router.post("/:topic_id/question", (req, res) => {
+	const newQuestion = req.body.question_text;
+	const id = req.params.topic_id;
+	if(!newQuestion){
+		res.status(400).json({
+			error: "The question can not be empty",
+		  });
+	}
+	topicDb
+		.createNewQuestion(id, newQuestion)
+		.then((data) => res.status(200).json(data))
+		.catch(() => {
+			res.status(500).json({
+				error: "creating a new question failed",
+			});
+		 });
+});
+router.put("/:topic_id/question", function (req, res) {
 	const newQuestion = req.body.question_text;
 	const id = req.params.topic_id;
 	if(!newQuestion){
 		return res.status(400).send("The question can not be empty");
 	}
 	topicDb
-		.createNewQuestion(id, newQuestion)
-		.then(() => res.send("Question created!"))
-		.catch((err) => {
-			console.error(err);
-			res.json(500);
-		});
+		.updateQuestion( id, newQuestion)
+		.then((data) => res.status(200).json(data))
+		.catch(() => {
+			res.status(500).json({
+				error: "500 Internal Server Error",
+			});
+		 });
 });
 module.exports = router;

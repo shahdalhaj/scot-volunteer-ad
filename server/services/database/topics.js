@@ -33,6 +33,15 @@ const getAllQuestions = (id) => {
 		.then((result) => result.rows);
 };
 
+
+const getQuestionById=(topicId, questionId)=> {
+
+	return pool
+		.query("SELECT * FROM questions WHERE topic_id =$1 and question_id = $2", [topicId, questionId])
+		.then((result) => result.rows[0]);
+
+
+};
 const updateTopic =( newTopicName, documentName, documentLink, topicId)=> {
 	const query = "UPDATE topics SET  topic_name=$1 , document_name=$2, document_link= $3 where topic_id=$4 ";
 	return pool
@@ -47,7 +56,20 @@ const createNewQuestion =( id, newQuestion)=> {
 	const query = "INSERT INTO questions (topic_id, question_text) VALUES ($1,$2)";
 
 	return pool
-		.query(query, [id, newQuestion]);
+		.query(query, [id, newQuestion])
+		 .then(() => {
+			return  getAllQuestions (id);
+		});
+
+};
+const updateQuestion =(id, newQuestion)=> {
+	const query = "UPDATE questions SET  question_text=$1 where topic_id=$2 ";
+	return pool
+	  .query(query, [newQuestion, id])
+	  .then(() => {
+			return  getAllQuestions (id);
+		});
+
 };
 
 module.exports = {
@@ -55,6 +77,8 @@ module.exports = {
 	getTopicById,
 	createNewTopic,
 	getAllQuestions,
+	getQuestionById,
 	createNewQuestion,
+	updateQuestion,
 	updateTopic,
 };
