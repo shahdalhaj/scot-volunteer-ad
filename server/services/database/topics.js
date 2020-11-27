@@ -41,7 +41,10 @@ const updateQuestion =(id, newQuestion)=> {
 	const query = "UPDATE questions SET  question_text=$1 where topic_id=$2 ";
 	return pool
 	  .query(query, [newQuestion, id])
-	  .then((result) => result.rows);
+	  .then(() => {
+			return  getAllQuestions (id);
+		});
+
 };
 
 module.exports = {
