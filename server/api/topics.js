@@ -73,4 +73,19 @@ router.post("/:topic_id/question", (req, res) => {
 			res.json(500);
 		});
 });
+router.put("/:topic_id/question", function (req, res) {
+	const newQuestion = req.body.question_text;
+	const id = req.params.topic_id;
+	console.log(newQuestion);
+	if(!newQuestion){
+		return res.status(400).send("The question can not be empty");
+	}
+	topicDb
+		.updateQuestion( id, newQuestion)
+		.then(() => res.send("Question updated!"))
+	    .catch((err) => {
+			console.error(err);
+			res.json(500);
+		});
+});
 module.exports = router;
