@@ -30,19 +30,27 @@ const useStyles = makeStyles({
 const OneCard = props => {
   const classes = useStyles();
 
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState(true);
 
   const handleEditMode = () => {
     setEdit(!edit);
   };
 
-  const handleChange = event => {
-    props.setData([
+  const updateTopic = (topicId, updatedValue) => {
+    const oldTopic = Object.values(props.data).find(
+      topic => topic.id === topicId
+    );
+    const newTopic = {
+      ...oldTopic,
+      title: updatedValue
+    };
+
+    const updatedTopics = {
       ...props.data,
-      {
-        [event.target.valoe]: event.target.value
-      }
-    ]);
+      [topicId]: newTopic
+    };
+
+    props.setData(updatedTopics);
   };
 
   const handleSubmit = event => {
@@ -51,7 +59,7 @@ const OneCard = props => {
     props.setData("");
   };
 
-  const renderCards = (card, index) => {
+  const renderCards = (topic, index) => {
     return (
       <Card
         className={classes.root}
@@ -61,7 +69,7 @@ const OneCard = props => {
         <CardActionArea>
           <CardMedia className={classes.media} title="Contemplative Reptile" />
           <CardContent style={{ paddingBottom: 30 }}>
-            {edit && <TitleForm onChange={handleChange} value={card.title} />}
+            {edit && <TitleForm updateTopic={updateTopic} topic={topic} />}
             {edit && <Button onSubmit={handleSubmit}>ok</Button>}
             {!edit && (
               <Typography
@@ -71,11 +79,11 @@ const OneCard = props => {
                 variant="h5"
                 component="h2"
               >
-                {card.title}
+                {topic.title}
               </Typography>
             )}
             <Typography variant="body2" color="textSecondary" component="p">
-              {card.info}
+              {topic.info}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -129,7 +137,7 @@ const OneCard = props => {
           marginTop: 20
         }}
       >
-        {props.data.map(renderCards)}
+        {Object.values(props.data).map(renderCards)}
 
         <Card
           className={classes.root}

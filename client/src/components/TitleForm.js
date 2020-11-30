@@ -11,12 +11,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function TitleForm() {
+function TitleForm(props) {
   const classes = useStyles();
+
+  const handleChange = event => {
+    props.updateTopic(props.topic.id, event.target.value);
+  };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField
+        id="outlined-basic"
+        label="Outlined"
+        variant="outlined"
+        onChange={handleChange}
+      />
     </form>
   );
 }
