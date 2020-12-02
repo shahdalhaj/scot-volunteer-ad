@@ -138,7 +138,7 @@ CREATE TABLE  volunteer_answers (
 	answer varchar(255) NOT NULL,
 	CONSTRAINT volunteer_answers_pkey PRIMARY KEY (volunteer_block_id, question_id),
 	CONSTRAINT fk_questions FOREIGN KEY (question_id) REFERENCES questions(question_id),
-	CONSTRAINT volunteer_answers_fk FOREIGN KEY (volunteer_block_id) REFERENCES "volunteer_Blocks"(volunteer_block_id)
+	CONSTRAINT volunteer_answers_fk FOREIGN KEY (volunteer_block_id) REFERENCES volunteer_blocks (volunteer_block_id)
 );
 
 -- Permissions
