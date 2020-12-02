@@ -31,8 +31,8 @@ INSERT INTO questions (topic_id, question_text) VALUES(2, 'What are the types of
 
 
 
-INSERT INTO volunteer_answers (volunteer_topic_id, question_id, answer) VALUES(1, 1, 'Past simple, past continus');
-INSERT INTO volunteer_answers (volunteer_topic_id, question_id, answer) VALUES(2,1 , 'Simple Past Tense.Past Continuous Tense.
+INSERT INTO volunteer_answers (volunteer_block_id, question_id, answer) VALUES(1, 1, 'Past simple, past continus');
+INSERT INTO volunteer_answers (volunteer_block_id, question_id, answer) VALUES(2,1 , 'Simple Past Tense.Past Continuous Tense.
 Past Perfect Tense.
 Past Perfect Continuous Tense.
 ');
