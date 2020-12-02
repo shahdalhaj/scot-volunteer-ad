@@ -19,7 +19,12 @@ function TitleForm(props) {
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form
+      className={classes.root}
+      noValidate
+      autoComplete="off"
+      onSubmit={props.updateTopic}
+    >
       <TextField
         id="outlined-basic"
         label="Outlined"

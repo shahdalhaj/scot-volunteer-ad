@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 const OneCard = props => {
   const classes = useStyles();
 
-  const [edit, setEdit] = useState(true);
+  const [edit, setEdit] = useState(false);
 
   const handleEditMode = () => {
     setEdit(!edit);
@@ -53,11 +53,11 @@ const OneCard = props => {
     props.setData(updatedTopics);
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    setEdit(false);
-    props.setData("");
-  };
+  //const handleSubmit = event => {
+  //  event.preventDefault();
+  //  setEdit(false);
+  //  props.setData("");
+  //};
 
   const renderCards = (topic, index) => {
     return (
@@ -70,7 +70,7 @@ const OneCard = props => {
           <CardMedia className={classes.media} title="Contemplative Reptile" />
           <CardContent style={{ paddingBottom: 30 }}>
             {edit && <TitleForm updateTopic={updateTopic} topic={topic} />}
-            {edit && <Button onSubmit={handleSubmit}>ok</Button>}
+            {edit && <Button onClick={handleEditMode}>ok</Button>}
             {!edit && (
               <Typography
                 onDoubleClick={handleEditMode}
