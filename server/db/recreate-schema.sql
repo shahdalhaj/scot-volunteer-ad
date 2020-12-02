@@ -90,7 +90,7 @@ GRANT ALL ON TABLE public.topics TO app_user;
 
 -- DROP TABLE public."volunteer_Blocks";
 
-CREATE TABLE public.volunteer_Blocks (
+CREATE TABLE public.volunteer_blocks (
 	volunteer_block_id int4 NOT NULL GENERATED ALWAYS AS IDENTITY,
 	volunteer_id int4 NOT NULL,
 	assessment_start timestamp NULL,
