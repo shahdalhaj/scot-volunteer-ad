@@ -17,7 +17,6 @@ INSERT INTO topics ( topic_name, document_name, document_link) VALUES('Intermedi
 INSERT INTO volunteers ( email) VALUES('Volunteer1@email.com');
 INSERT INTO volunteers ( email) VALUES('John@mail.com');
 
-INSERT INTO volunteer_Blocks (volunteer_id,block_id ) VALUES(0, '', '', 0);
 
 INSERT INTO volunteer_Blocks ( volunteer_id,block_id) VALUES(1, 1);
 INSERT INTO volunteer_Blocks ( volunteer_id,block_id) VALUES(1, 2);
