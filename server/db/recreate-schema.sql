@@ -96,7 +96,7 @@ CREATE TABLE  volunteer_blocks (
 	assessment_start timestamp NULL,
 	assessment_end timestamp NULL,
 	block_id int4 NULL,
-	CONSTRAINT volunteer_topic_pkey PRIMARY KEY (volunteer_block_id),
+	CONSTRAINT volunteer_block_pkey PRIMARY KEY (volunteer_block_id),
 	CONSTRAINT fk_voulnteers FOREIGN KEY (volunteer_id) REFERENCES volunteers(volunteer_id),
 	CONSTRAINT volunteer_blocks_fk FOREIGN KEY (block_id) REFERENCES blocks(block_id)
 );
