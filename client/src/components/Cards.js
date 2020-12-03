@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   }
 });
 
-const OneCard = props => {
+const Cards = props => {
   const classes = useStyles();
 
   const [edit, setEdit] = useState(false);
@@ -163,4 +163,4 @@ const OneCard = props => {
   );
 };
 
-export default OneCard;
+export default Cards;
