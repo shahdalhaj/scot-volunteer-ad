@@ -79,7 +79,7 @@ const Cards = props => {
                 variant="h5"
                 component="h2"
               >
-                {topic.title}
+                {topic.topic_name}
               </Typography>
             )}
             <Typography variant="body2" color="textSecondary" component="p">
