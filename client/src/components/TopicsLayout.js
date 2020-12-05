@@ -6,13 +6,13 @@ const TopicsLayout = () => {
 
   const TOKEN = localStorage.getItem("token");
   useEffect(() => {
-    fetch("http://localhost:4000/api/topics", {
+    fetch("/api/topics", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${TOKEN}`
       }
     })
-      .then(res => res.json)
+      .then(res => res.json())
       .then(data => setApi(data));
   }, []);
   console.log(api);
@@ -24,8 +24,3 @@ const TopicsLayout = () => {
 };
 
 export default TopicsLayout;
-
-//{
-//  "email": "admin@cyf.org",
-//  "password":"admin_password"
-//}
