@@ -24,8 +24,3 @@ const TopicsLayout = () => {
 };
 
 export default TopicsLayout;
-
-//{
-//  "email": "admin@cyf.org",
-//  "password":"admin_password"
-//}

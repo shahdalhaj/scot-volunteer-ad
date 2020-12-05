@@ -30,35 +30,32 @@ const useStyles = makeStyles({
 const Cards = props => {
   const classes = useStyles();
 
-  const [edit, setEdit] = useState(false);
+  const [editTopicName, setEditTopicName] = useState("");
 
-  const handleEditMode = () => {
-    setEdit(!edit);
+  const [editTopicId, setEditTopicId] = useState(null);
+  const handleEditMode = id => {
+    setEditTopicId(id);
   };
+  const handleOkClick = () => {
+    const TOKEN = localStorage.getItem("token");
+    handleEditMode(null);
 
+    fetch(`/api/topics/${editTopicId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`
+      },
+      body: JSON.stringify({
+        topic_name: editTopicName
+      })
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  };
   const updateTopic = (topicId, updatedValue) => {
-    const oldTopic = Object.values(props.data).find(
-      topic => topic.id === topicId
-    );
-    const newTopic = {
-      ...oldTopic,
-      title: updatedValue
-    };
-
-    const updatedTopics = {
-      ...props.data,
-      [topicId]: newTopic
-    };
-
-    props.setData(updatedTopics);
+    setEditTopicName(updatedValue);
   };
-
-  //const handleSubmit = event => {
-  //  event.preventDefault();
-  //  setEdit(false);
-  //  props.setData("");
-  //};
-
   const renderCards = (topic, index) => {
     return (
       <Card
@@ -69,11 +66,21 @@ const Cards = props => {
         <CardActionArea>
           <CardMedia className={classes.media} title="Contemplative Reptile" />
           <CardContent style={{ paddingBottom: 30 }}>
-            {edit && <TitleForm updateTopic={updateTopic} topic={topic} />}
-            {edit && <Button onClick={handleEditMode}>ok</Button>}
-            {!edit && (
+            {editTopicId === topic.topic_id && (
+              <TitleForm updateTopic={updateTopic} topic={topic} />
+            )}
+            {editTopicId === topic.topic_id && (
+              <Button
+                onClick={() => {
+                  handleOkClick();
+                }}
+              >
+                ok
+              </Button>
+            )}
+            {editTopicId !== topic.topic_id && (
               <Typography
-                onDoubleClick={handleEditMode}
+                onDoubleClick={() => handleEditMode(topic.topic_id)}
                 style={{ position: "relative", left: 60, padding: 20 }}
                 gutterBottom
                 variant="h5"
