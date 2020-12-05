@@ -1,40 +1,32 @@
 const express = require("express");
 const router = express.Router();
 const blockDb = require("../services/database/blocks");
-const passport = require("passport");
+// const passport = require("passport");
 
-router.get(
-  "/",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    blockDb
-      .getAllBlocks()
-      .then((data) => {
-        res.json(data);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.json(500);
-      });
-  }
-);
+router.get("/", (req, res) => {
+  blockDb
+    .getAllBlocks()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.json(500);
+    });
+});
 
-router.get(
-  "/:block_id",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    try {
-      const blockId = Number(req.params.block_id);
-      blockDb.getBlockById(blockId).then((data) => {
-        res.json(data);
-      });
-    } catch (err) {
-      res.status(500).json({
-        error: "500 Internal Server Error while loading Blocks page",
-      });
-    }
+router.get("/:block_id", (req, res) => {
+  try {
+    const blockId = Number(req.params.block_id);
+    blockDb.getBlockById(blockId).then((data) => {
+      res.json(data);
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: "500 Internal Server Error while loading Blocks page",
+    });
   }
-);
+});
 
 router.post("/", (req, res) => {
   const newBlockName = req.body.block_name;
