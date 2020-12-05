@@ -1,9 +1,11 @@
 import React from "react";
 import Block from "./Block";
-const BlocksList = () => {
+const BlocksList = ({ blocks }) => {
   return (
     <div>
-      <Block />
+      {blocks.map(block => (
+        <Block key={block.block_id} blockName={block.block_name} />
+      ))}
     </div>
   );
 };

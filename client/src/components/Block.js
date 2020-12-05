@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 
 import { Check, Delete } from "@material-ui/icons";
-const Block = () => {
+const Block = ({ blockName }) => {
   return (
     <Container>
       <Card
@@ -20,6 +20,7 @@ const Block = () => {
             <IconButton style={{ float: "left" }}>
               <Check style={{ color: "green" }} />
             </IconButton>
+            {blockName}
             <IconButton style={{ float: "right" }}>
               <Delete style={{ color: "green" }} />
             </IconButton>
