@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TitleForm from "./TitleForm";
 import { Link } from "react-router-dom";
+import ViewButton from "./ViewButton";
 
 const useStyles = makeStyles({
   root: {
@@ -33,6 +34,7 @@ const Cards = props => {
   const [editTopicName, setEditTopicName] = useState("");
 
   const [editTopicId, setEditTopicId] = useState(null);
+  const [questions, setQuestions] = useState([]);
   const handleEditMode = id => {
     setEditTopicId(id);
   };
@@ -56,6 +58,23 @@ const Cards = props => {
   const updateTopic = (topicId, updatedValue) => {
     setEditTopicName(updatedValue);
   };
+  const handleQuestionsList = id => {
+    console.log(id);
+    const TOKEN = localStorage.getItem("token");
+
+    handleEditMode(null);
+    useEffect(() => {
+      fetch(`/api/topics/${id}/questions`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${TOKEN}`
+        }
+      })
+        .then(res => res.json())
+        .then(data => setQuestions(data));
+    }, []);
+  };
+  console.log(questions);
   const renderCards = (topic, index) => {
     return (
       <Card
@@ -95,29 +114,25 @@ const Cards = props => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button
-            size="small"
+          <Link
+            onClick={() => handleQuestionsList(topic.topic_id)}
+            to="/viewButton"
             style={{
               backgroundColor: "orangered",
               border: "1px white solid",
               borderRadius: "5rem",
-              color: "white"
-            }}
-          >
-            Edit
-          </Button>
-          <Button
-            size="small"
-            style={{
-              backgroundColor: "orangered",
-              border: "1px white solid",
-              borderRadius: "5rem",
-              color: "white"
+              color: "white",
+              padding: 15,
+              paddingLeft: 25,
+              paddingBottom: 20,
+              width: "60px",
+              height: "10px"
             }}
           >
             View
-          </Button>
+          </Link>
         </CardActions>
+        <ViewButton questions={questions} />
       </Card>
     );
   };
