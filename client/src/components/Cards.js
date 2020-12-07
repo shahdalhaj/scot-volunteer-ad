@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TitleForm from "./TitleForm";
 import { Link } from "react-router-dom";
-import ViewButton from "./ViewButton";
 
 const useStyles = makeStyles({
   root: {
@@ -34,7 +33,7 @@ const Cards = props => {
   const [editTopicName, setEditTopicName] = useState("");
 
   const [editTopicId, setEditTopicId] = useState(null);
-  const [questions, setQuestions] = useState([]);
+  //const [questions, setQuestions] = useState([]);
   const handleEditMode = id => {
     setEditTopicId(id);
   };
@@ -58,23 +57,23 @@ const Cards = props => {
   const updateTopic = (topicId, updatedValue) => {
     setEditTopicName(updatedValue);
   };
-  const handleQuestionsList = id => {
-    console.log(id);
-    const TOKEN = localStorage.getItem("token");
+  //const handleQuestionsList = id => {
+  //  console.log(id);
+  //  const TOKEN = localStorage.getItem("token");
 
-    handleEditMode(null);
-    useEffect(() => {
-      fetch(`/api/topics/${id}/questions`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${TOKEN}`
-        }
-      })
-        .then(res => res.json())
-        .then(data => setQuestions(data));
-    }, []);
-  };
-  console.log(questions);
+  //  handleEditMode(null);
+  //  useEffect(() => {
+  //    fetch(`/api/topics/${id}/questions`, {
+  //      method: "GET",
+  //      headers: {
+  //        Authorization: `Bearer ${TOKEN}`
+  //      }
+  //    })
+  //      .then(res => res.json())
+  //      .then(data => setQuestions(data));
+  //  }, []);
+  ////};
+  //console.log(questions);
   const renderCards = (topic, index) => {
     return (
       <Card
@@ -115,8 +114,7 @@ const Cards = props => {
         </CardActionArea>
         <CardActions>
           <Link
-            onClick={() => handleQuestionsList(topic.topic_id)}
-            to="/viewButton"
+            to={`/topics/${topic.topic_id}`}
             style={{
               backgroundColor: "orangered",
               border: "1px white solid",
@@ -132,7 +130,6 @@ const Cards = props => {
             View
           </Link>
         </CardActions>
-        <ViewButton questions={questions} />
       </Card>
     );
   };

@@ -17,7 +17,7 @@ import { AppBar, Toolbar } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
-import ViewButton from "./components/ViewButton";
+import Topic from "./components/Topic";
 
 const logout = e => {
   e.preventDefault();
@@ -149,7 +149,7 @@ const Routes = () => {
             <Route exact path="/about/" component={About}></Route>
             <Route exact path="/status/" component={Status}></Route>
             <Route exact path="/topics/" component={Topics}></Route>
-            <Route exact path="/topics/view" component={ViewButton}></Route>
+            <Route exact path="/topics/:id" component={Topic}></Route>
           </SecuredRoute>
           <Route path="/login/" component={Login} />
         </div>
