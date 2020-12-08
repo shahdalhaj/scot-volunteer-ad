@@ -6,7 +6,10 @@ import About from "./components/About";
 import Status from "./components/Status";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
+import BlocksList from "./components/BlocksList";
 import Topics from "./components/Topics";
+
+
 import {
   BrowserRouter as Router,
   Route,
@@ -95,6 +98,15 @@ const Routes = () => {
                     Status
                   </Link>
                 </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link
+                    className="nav-link"
+                    style={{ color: "#ff7a3dfd", backgroundColor: "white" }}
+                    to="/BlocksList"
+                  >
+                    Blocks
+                  </Link>
+                </MenuItem>
                 {/* login and logout toggles  */}
                 {localStorage.getItem("token") ? (
                   <MenuItem
@@ -147,6 +159,7 @@ const Routes = () => {
           <SecuredRoute>
             <Route exact path="/about/" component={About}></Route>
             <Route exact path="/status/" component={Status}></Route>
+            <Route exact path="/BlocksList/" component={BlocksList}></Route>
             <Route exact path="/topics/" component={Topics}></Route>
           </SecuredRoute>
           <Route path="/login/" component={Login} />
