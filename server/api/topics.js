@@ -61,9 +61,9 @@ router.put("/:topic_id", function (req, res) {
 	topicDb
 		.updateTopic( newTopicName, documentName, documentLink,topicId)
 		.then((data) => res.status(200).json(data))
-		.catch(() => {
+		.catch((error) => {
 			res.status(500).json({
-				error: "500 Internal Server Error",
+				error: `500 ${error.message}`,
 			});
 		 });
 
