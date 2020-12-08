@@ -7,6 +7,7 @@ import Status from "./components/Status";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Topics from "./components/Topics";
+import NewTopic from "./components/NewTopic";
 import {
   BrowserRouter as Router,
   Route,
@@ -150,6 +151,7 @@ const Routes = () => {
             <Route exact path="/status/" component={Status}></Route>
             <Route exact path="/topics/" component={Topics}></Route>
             <Route exact path="/topics/:id" component={Topic}></Route>
+            <Route exact path="/createTopic" component={NewTopic}></Route>
           </SecuredRoute>
           <Route path="/login/" component={Login} />
         </div>

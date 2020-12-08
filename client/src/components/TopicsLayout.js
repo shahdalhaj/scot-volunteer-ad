@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
-//import ViewButton from "./ViewButton";
 
 const TopicsLayout = () => {
   let [api, setApi] = useState([]);
@@ -20,7 +19,6 @@ const TopicsLayout = () => {
   return (
     <div>
       <Cards setData={setApi} data={api} />
-      {/*<ViewButton setData={setApi} data={api} />*/}
     </div>
   );
 };

@@ -37,10 +37,11 @@ const Cards = props => {
   const handleEditMode = id => {
     setEditTopicId(id);
   };
-  const handleOkClick = () => {
+  const handleOkClick = event => {
+    event.preventDefault();
     const TOKEN = localStorage.getItem("token");
     handleEditMode(null);
-
+    console.log(editTopicId);
     fetch(`/api/topics/${editTopicId}`, {
       method: "PUT",
       headers: {
@@ -57,23 +58,6 @@ const Cards = props => {
   const updateTopic = (topicId, updatedValue) => {
     setEditTopicName(updatedValue);
   };
-  //const handleQuestionsList = id => {
-  //  console.log(id);
-  //  const TOKEN = localStorage.getItem("token");
-
-  //  handleEditMode(null);
-  //  useEffect(() => {
-  //    fetch(`/api/topics/${id}/questions`, {
-  //      method: "GET",
-  //      headers: {
-  //        Authorization: `Bearer ${TOKEN}`
-  //      }
-  //    })
-  //      .then(res => res.json())
-  //      .then(data => setQuestions(data));
-  //  }, []);
-  ////};
-  //console.log(questions);
   const renderCards = (topic, index) => {
     return (
       <Card
