@@ -30,14 +30,12 @@ router.get("/:block_id", (req, res) => {
 
 router.post("/", (req, res) => {
   const newBlockName = req.body.block_name;
-  console.log("posting new block-->", newBlockName);
 
   if (!newBlockName) {
     res.status(400).json({
       error: "Could you please enter the Block name pleae ",
     });
   }
-  console.log("posting new block");
   blockDb
     .createNewBlock(newBlockName)
     .then((data) => res.status(200).json(data))
@@ -56,7 +54,6 @@ router.put("/:block_id", function(req, res) {
       error: "Could you please enter the block name please",
     });
   }
-  console.log(blockId, newBlockName);
   blockDb
     .updateBlock(newBlockName, blockId)
     .then((data) => res.status(200).json(data))

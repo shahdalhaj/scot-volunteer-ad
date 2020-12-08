@@ -6,7 +6,7 @@ import About from "./components/About";
 import Status from "./components/Status";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
-import BlocksForm from "./components/BlocksForm";
+import BlocksList from "./components/BlocksList";
 import {
   BrowserRouter as Router,
   Route,
@@ -99,7 +99,7 @@ const Routes = () => {
                   <Link
                     className="nav-link"
                     style={{ color: "#ff7a3dfd", backgroundColor: "white" }}
-                    to="/BlocksForm"
+                    to="/BlocksList"
                   >
                     Blocks
                   </Link>
@@ -156,7 +156,7 @@ const Routes = () => {
           <SecuredRoute>
             <Route exact path="/about/" component={About}></Route>
             <Route exact path="/status/" component={Status}></Route>
-            <Route exact path="/BlocksForm/" component={BlocksForm}></Route>
+            <Route exact path="/BlocksList/" component={BlocksList}></Route>
           </SecuredRoute>
           <Route path="/login/" component={Login} />
         </div>

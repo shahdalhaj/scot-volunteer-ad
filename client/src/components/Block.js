@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -6,27 +6,47 @@ import {
   Container,
   IconButton
 } from "@material-ui/core";
+import BlocksForm from "./BlocksForm";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
-import { Check, Delete } from "@material-ui/icons";
-const Block = ({ blockName }) => {
+const Block = ({ blocks, updateBlock }) => {
+  const [edit, setEdit] = useState({ blockId: null, blockName: "" });
+  const submitUpdate = blockName => {
+    updateBlock(edit.blockId, blockName);
+    setEdit({
+      blockId: null,
+      blockName: ""
+    });
+  };
+
+  if (edit.blockId) {
+    return <BlocksForm edit={edit} onSubmit={submitUpdate} />;
+  }
   return (
     <Container>
-      <Card
-        variant="outlined"
-        style={{ marginTop: 35, background: "lightblue" }}
-      >
-        <CardContent>
-          <Typography variant="h5">
-            <IconButton style={{ float: "left" }}>
-              <Check style={{ color: "green" }} />
-            </IconButton>
-            {blockName}
-            <IconButton style={{ float: "right" }}>
-              <Delete style={{ color: "green" }} />
-            </IconButton>
-          </Typography>
-        </CardContent>
-      </Card>
+      {blocks.map(block => (
+        <Card
+          variant="outlined"
+          style={{ marginTop: 5, background: "#faf0be" }}
+        >
+          <CardContent>
+            <Typography variant="h6">
+              {block.block_name}
+              <IconButton style={{ float: "right" }}>
+                <EditOutlinedIcon
+                  style={{ color: "maginta" }}
+                  onClick={() => {
+                    setEdit({
+                      blockId: block.block_id,
+                      blockName: block.block_name
+                    });
+                  }}
+                />
+              </IconButton>
+            </Typography>
+          </CardContent>
+        </Card>
+      ))}
     </Container>
   );
 };
