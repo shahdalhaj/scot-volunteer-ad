@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//import { useHistory,Link } from "react-router-dom";
 import { signApi } from "../api/auth";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -54,6 +55,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Login() {
+  //let history = useHistory();
   const classes = useStyles();
 
   const [email, setEmail] = useState("");
@@ -78,10 +80,12 @@ function Login() {
       .catch(() => {
         setError(true);
       });
+    //history.push("/topics");
   };
 
   const token = localStorage.getItem("token");
   if (token) {
+    //history.push("/topics");
     return <div>You are already logged in.</div>;
   } else
     return (
@@ -179,6 +183,9 @@ function Login() {
               >
                 Log In
               </Button>
+              {/*<Link to="/topics" className="register">
+             logIn
+            </Link>*/}
               <Button
                 type="submit"
                 fullWidth
