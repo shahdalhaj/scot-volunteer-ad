@@ -7,6 +7,8 @@ import Status from "./components/Status";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import BlocksList from "./components/BlocksList";
+import Topics from "./components/Topics";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -157,6 +159,7 @@ const Routes = () => {
             <Route exact path="/about/" component={About}></Route>
             <Route exact path="/status/" component={Status}></Route>
             <Route exact path="/BlocksList/" component={BlocksList}></Route>
+            <Route exact path="/topics/" component={Topics}></Route>
           </SecuredRoute>
           <Route path="/login/" component={Login} />
         </div>
