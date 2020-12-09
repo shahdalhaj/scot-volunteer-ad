@@ -5,8 +5,8 @@ import BlocksForm from "./BlocksForm";
 
 const BlocksList = () => {
   const [blocks, setBlocks] = useState([]);
-  //   const [block_name, setBlock_Name] = useState("");
   const TOKEN = localStorage.getItem("token");
+
   useEffect(async () => {
     try {
       const response = await fetch("/api/blocks", {

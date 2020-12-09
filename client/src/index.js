@@ -9,7 +9,6 @@ import Login from "./components/Login";
 import BlocksList from "./components/BlocksList";
 import Topics from "./components/Topics";
 
-
 import {
   BrowserRouter as Router,
   Route,
@@ -159,7 +158,7 @@ const Routes = () => {
           <SecuredRoute>
             <Route exact path="/about/" component={About}></Route>
             <Route exact path="/status/" component={Status}></Route>
-            <Route exact path="/BlocksList/" component={BlocksList}></Route>
+            <Route exact path="/blockslist/" component={BlocksList}></Route>
             <Route exact path="/topics/" component={Topics}></Route>
           </SecuredRoute>
           <Route path="/login/" component={Login} />

@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const blockDb = require("../services/database/blocks");
-// const passport = require("passport");
 
 router.get("/", (req, res) => {
   blockDb
