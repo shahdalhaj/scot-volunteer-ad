@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 function NewTopic() {
   const history = useHistory();
@@ -18,8 +18,8 @@ function NewTopic() {
       [event.target.name]: event.target.value
     };
     setNewTopic(updateNewTopic);
-    console.log(updateNewTopic);
   };
+
   const handleSubmit = event => {
     event.preventDefault();
     fetch(`/api/topics/create`, {
@@ -48,40 +48,114 @@ function NewTopic() {
       documentName: "",
       documentLink: ""
     });
-    console.log("the new topic " + newTopic);
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        border: "1px solid orange",
+        height: "70vh",
+        width: "500px",
+        marginTop: "75px",
+        marginLeft: "400px",
+        flexWrap: "wrap"
+      }}
+    >
       <form>
+        <Typography
+          variant="h4"
+          style={{
+            marginLeft: "55px"
+          }}
+        >
+          {" "}
+          Create A New Topic
+        </Typography>
+        <div
+          style={{
+            height: "20px"
+          }}
+        />
+        <Typography variant="h5">Topic Title:</Typography>
         <TextField
+          style={{
+            width: "450px"
+          }}
           id="outlined-basic"
-          label="topicName"
+          label="Topic Name"
           variant="outlined"
           onChange={handleChange}
           name="topicName"
           value={newTopic.topicName}
         />
+        <div
+          style={{
+            height: "20px"
+          }}
+        />
+        <Typography variant="h5">Document Name:</Typography>
         <TextField
+          style={{
+            width: "450px"
+          }}
           id="outlined-basic"
-          label="documentName"
+          label="Document Name"
           variant="outlined"
           onChange={handleChange}
           name="documentName"
           value={newTopic.documentName}
         />
+        <div
+          style={{
+            height: "20px"
+          }}
+        />
+        <Typography variant="h5">Document Link:</Typography>
         <TextField
+          style={{
+            width: "450px"
+          }}
           id="outlined-basic"
-          label="documentLink"
+          label="Document Link"
           variant="outlined"
           onChange={handleChange}
           name="documentLink"
           value={newTopic.documentLink}
         />
-        <Button to="/topics" onClick={handleSubmit}>
-          Submit
-        </Button>
       </form>
+      <Button
+        onClick={handleSubmit}
+        style={{
+          backgroundColor: "orangered",
+          color: "white",
+          fontSize: "15px",
+          width: "120px"
+        }}
+        variant="contained"
+      >
+        Submit
+      </Button>
+      <Link
+        to="/topics"
+        style={{
+          textDecoration: "none",
+          backgroundColor: "orangered",
+          border: "1px white solid",
+          color: "white",
+          borderRadius: "5px",
+          paddingLeft: 25,
+          paddingBottom: 15,
+          paddingTop: "10px",
+          width: "120px",
+          height: "13px",
+          fontSize: "15px"
+        }}
+      >
+        BACK TO TOPICS
+      </Link>
     </div>
   );
 }

@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TitleForm from "./TitleForm";
 import { Link } from "react-router-dom";
+import SaveIcon from "@material-ui/icons/Save";
 
 const useStyles = makeStyles({
   root: {
@@ -31,9 +32,7 @@ const Cards = props => {
   const classes = useStyles();
 
   const [editTopicName, setEditTopicName] = useState("");
-
   const [editTopicId, setEditTopicId] = useState(null);
-  //const [questions, setQuestions] = useState([]);
   const handleEditMode = id => {
     setEditTopicId(id);
   };
@@ -41,7 +40,6 @@ const Cards = props => {
     event.preventDefault();
     const TOKEN = localStorage.getItem("token");
     handleEditMode(null);
-    console.log(editTopicId);
     fetch(`/api/topics/${editTopicId}`, {
       method: "PUT",
       headers: {
@@ -58,79 +56,92 @@ const Cards = props => {
   const updateTopic = (topicId, updatedValue) => {
     setEditTopicName(updatedValue);
   };
+
+  function title() {
+    return (
+      <Typography
+        style={{
+          fontSize: "43px",
+          marginLeft: "530px"
+        }}
+      >
+        Topics List
+      </Typography>
+    );
+  }
+
   const renderCards = (topic, index) => {
     return (
-      <Card
-        className={classes.root}
-        key={index}
-        style={{ width: "20rem", height: "16rem" }}
-      >
-        <CardActionArea>
-          <CardMedia className={classes.media} title="Contemplative Reptile" />
-          <CardContent style={{ paddingBottom: 30 }}>
-            {editTopicId === topic.topic_id && (
-              <TitleForm updateTopic={updateTopic} topic={topic} />
-            )}
-            {editTopicId === topic.topic_id && (
-              <Button
-                onClick={() => {
-                  handleOkClick();
-                }}
-              >
-                ok
-              </Button>
-            )}
-            {editTopicId !== topic.topic_id && (
-              <Typography
-                onDoubleClick={() => handleEditMode(topic.topic_id)}
-                style={{ position: "relative", left: 60, padding: 20 }}
-                gutterBottom
-                variant="h5"
-                component="h2"
-              >
-                {topic.topic_name}
+      <div>
+        <Card
+          className={classes.root}
+          key={index}
+          style={{ width: "20rem", height: "10rem" }}
+        >
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              {editTopicId === topic.topic_id && (
+                <TitleForm updateTopic={updateTopic} topic={topic} />
+              )}
+              {editTopicId === topic.topic_id && (
+                <Button
+                  startIcon={<SaveIcon />}
+                  onClick={() => {
+                    handleOkClick();
+                  }}
+                ></Button>
+              )}
+              {editTopicId !== topic.topic_id && (
+                <Typography
+                  onDoubleClick={() => handleEditMode(topic.topic_id)}
+                  style={{ position: "relative", left: 60 }}
+                  gutterBottom
+                  variant="h5"
+                  component="h2"
+                >
+                  {topic.topic_name}
+                </Typography>
+              )}
+              <Typography variant="body2" color="textSecondary" component="p">
+                {topic.info}
               </Typography>
-            )}
-            <Typography variant="body2" color="textSecondary" component="p">
-              {topic.info}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Link
-            to={`/topics/${topic.topic_id}`}
-            style={{
-              backgroundColor: "orangered",
-              border: "1px white solid",
-              borderRadius: "5rem",
-              color: "white",
-              padding: 15,
-              paddingLeft: 25,
-              paddingBottom: 20,
-              width: "60px",
-              height: "10px"
-            }}
-          >
-            View
-          </Link>
-        </CardActions>
-      </Card>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Link
+              to={`/topics/${topic.topic_id}`}
+              style={{
+                textDecoration: "none",
+                backgroundColor: "orangered",
+                border: "1px white solid",
+                borderRadius: "5rem",
+                color: "white",
+                paddingLeft: 25,
+                paddingBottom: 10,
+                width: "60px",
+                height: "15px"
+              }}
+            >
+              View
+            </Link>
+          </CardActions>
+        </Card>
+      </div>
     );
   };
 
   return (
-    <div
-      style={{
-        width: "60rem",
-        height: "auto",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
+    <div>
+      <div style={{}}>{title()}</div>
+
       <div
         style={{
-          width: "50rem",
+          marginLeft: "200px",
+          width: "900px",
           height: "auto",
           display: "flex",
           alignItems: "center",
@@ -144,17 +155,18 @@ const Cards = props => {
 
         <Card
           className={classes.root}
-          style={{ width: "25rem", height: "16rem" }}
+          style={{ width: "25rem", height: "10rem" }}
         >
           <CardActions>
             <Link
               to="/CreateTopic"
               style={{
+                textDecoration: "none",
                 backgroundColor: "orangered",
                 border: "1px white solid",
                 borderRadius: "5rem",
                 color: "white",
-                padding: 10
+                padding: 7
               }}
             >
               create a new Topic
