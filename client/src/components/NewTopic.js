@@ -6,7 +6,6 @@ import { useHistory, Link } from "react-router-dom";
 function NewTopic() {
   const history = useHistory();
   const TOKEN = localStorage.getItem("token");
-
   const [newTopic, setNewTopic] = useState({
     topicName: "",
     documentName: "",

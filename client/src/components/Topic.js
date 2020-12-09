@@ -1,11 +1,13 @@
-import { Typography } from "@material-ui/core";
+import { Typography, Button, TextField } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
 const Topic = () => {
   let { id } = useParams();
   let [api, setApi] = useState([]);
+  let [questionState, setQuestionState] = useState(false);
   const [questions, setQuestions] = useState([]);
+  const [addQuestion, setAddQuestion] = useState("");
   const TOKEN = localStorage.getItem("token");
   useEffect(() => {
     fetch(`/api/topics/${id}`, {
@@ -28,18 +30,37 @@ const Topic = () => {
       .then(res => res.json())
       .then(data => setQuestions(data));
   }, []);
-
+  const handleChange = event => {
+    setAddQuestion(event.target.value);
+    console.log(addQuestion);
+  };
+  // const submitQuestion=()=>{
+  //  setQuestionState(false)
+  //  }
+  const handleNewQuestion = event => {
+    event.preventDefault();
+    setQuestionState(!questionState);
+    fetch(`/api/topics/${id}/question`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`
+      },
+      body: JSON.stringify({
+        question_text: addQuestion
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          throw new Error(data.error);
+        }
+      });
+    setAddQuestion("");
+  };
   const renderQuestions = (question, index) => {
     return (
       <div key={index}>
-        <Typography
-          style={{
-            marginTop: "0.3rem",
-            marginRight: "340px"
-          }}
-        >
-          List of questions:{" "}
-        </Typography>
         <Typography
           style={{
             marginTop: "0.3rem",
@@ -87,7 +108,27 @@ const Topic = () => {
       >
         {api.document_name}
       </a>
+      <Typography
+        style={{
+          marginTop: "0.3rem",
+          marginRight: "340px"
+        }}
+      >
+        List of questions:
+      </Typography>
       {questions.map(renderQuestions)}
+      {questionState && (
+        <TextField
+          variant="outlined"
+          label="Enter new question"
+          value={addQuestion}
+          onChange={handleChange}
+        />
+      )}
+
+      <Button onClick={handleNewQuestion}>Add A New Question</Button>
+      {/*{questionState && <Button onClick ={submitQuestion}>  Submit
+</Button>}*/}
 
       <Link
         to="/topics"
