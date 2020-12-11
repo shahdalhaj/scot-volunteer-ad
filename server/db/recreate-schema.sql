@@ -73,8 +73,8 @@ CREATE TABLE  volunteers (
 CREATE TABLE  topics (
 	topic_id int4 NOT NULL GENERATED ALWAYS AS IDENTITY,
 	topic_name varchar(255) NOT NULL,
-	document_name varchar(255) NOT NULL,
-	document_link varchar(255) NOT NULL,
+	document_name varchar(255) ,
+	document_link varchar(255) ,
 	block_id int4 NULL,
 	CONSTRAINT topics_pkey PRIMARY KEY (topic_id),
 	CONSTRAINT topics_fk FOREIGN KEY (block_id) REFERENCES blocks(block_id)

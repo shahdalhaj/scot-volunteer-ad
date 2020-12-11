@@ -4,7 +4,7 @@ const pool = new Pool(config);
 
 
 const getAllTopics = () => {
-	return pool.query("select * from topics")
+	return pool.query("select * from topics ORDER BY topic_id")
 		.then((result) => result.rows);
 };
 
@@ -23,7 +23,7 @@ const createNewTopic=( newTopicName ,documentName, documentLink)=> {
 	return pool
 		.query(query, [newTopicName ,documentName, documentLink ])
 		.then(() => {
-			return getAllTopics ();
+			return getAllTopics();
 		});
 
 };
