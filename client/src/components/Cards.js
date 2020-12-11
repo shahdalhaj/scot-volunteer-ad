@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     backgroundSize: "cover",
     flexDirection: "column",
     margin: 5,
-    borderRadius: "10px"
+    borderRadius: "11px"
   },
   media: {
     height: 20,
