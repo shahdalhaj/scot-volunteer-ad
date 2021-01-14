@@ -148,7 +148,14 @@ const Topic = () => {
           onChange={handleChange}
         />
       )}
-
+      {/*{questionState && (
+        <Button
+          variant="outlined"
+          label="Enter new question"
+          onClick={setQuestionState(false)}>
+            CANCEL
+        </Button>
+      )}*/}
       <Button
         style={{
           border: "orangered 1px solid",
@@ -194,6 +201,7 @@ const Topic = () => {
         SEND TOPIC
       </a>
       {questionState && <Button onClick={handleNewQuestion}> Submit</Button>}
+      {questionState && <Button onClick={submitQuestion}> cancel</Button>}
 
       <Link
         to="/topics"

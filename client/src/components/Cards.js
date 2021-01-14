@@ -137,23 +137,10 @@ const Cards = props => {
                 height: "15px"
               }}
             >
-              View
+              VIEW
             </Link>
-            <Button
-              style={{
-                textDecoration: "none",
-                backgroundColor: "orangered",
-                border: "1px white solid",
-                borderRadius: "5rem",
-                color: "white",
-                paddingLeft: 25,
-                paddingBottom: 10,
-                width: "60px",
-                height: "15px"
-              }}
-            >
-              <DeleteTopic />
-            </Button>
+
+            <DeleteTopic />
           </CardActions>
         </Card>
       </div>

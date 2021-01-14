@@ -17,8 +17,6 @@ const DeleteTopic = () => {
       .then(data => setApi(data));
   }, []);
   const handleClick = () => {
-    const TOKEN = localStorage.getItem("token");
-
     fetch(`/api/topics/${api.topic_id}`, {
       method: "DELETE",
       headers: {
@@ -34,6 +32,14 @@ const DeleteTopic = () => {
 
   return (
     <Button
+      style={{
+        backgroundColor: "orangered",
+        border: "1px white solid",
+        borderRadius: "5rem",
+        color: "white",
+        width: "78px",
+        height: "27px"
+      }}
       onClick={() => {
         handleClick();
       }}
