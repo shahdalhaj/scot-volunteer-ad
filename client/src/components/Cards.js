@@ -6,6 +6,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
+import DeleteTopic from "./DeleteTopic";
 import Typography from "@material-ui/core/Typography";
 import TitleForm from "./TitleForm";
 import { Link } from "react-router-dom";
@@ -96,6 +97,7 @@ const Cards = props => {
               {editTopicId === topic.topic_id && (
                 <TitleForm updateTopic={updateTopic} topic={topic} />
               )}
+
               {editTopicId === topic.topic_id && (
                 <Button
                   startIcon={<SaveIcon />}
@@ -137,6 +139,21 @@ const Cards = props => {
             >
               View
             </Link>
+            <Button
+              style={{
+                textDecoration: "none",
+                backgroundColor: "orangered",
+                border: "1px white solid",
+                borderRadius: "5rem",
+                color: "white",
+                paddingLeft: 25,
+                paddingBottom: 10,
+                width: "60px",
+                height: "15px"
+              }}
+            >
+              <DeleteTopic />
+            </Button>
           </CardActions>
         </Card>
       </div>
