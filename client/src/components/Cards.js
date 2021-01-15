@@ -6,6 +6,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
+import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
 import DeleteTopic from "./DeleteTopic";
 import Typography from "@material-ui/core/Typography";
 import TitleForm from "./TitleForm";
@@ -103,6 +104,14 @@ const Cards = props => {
                   startIcon={<SaveIcon />}
                   onClick={() => {
                     handleOkClick();
+                  }}
+                ></Button>
+              )}
+              {editTopicId === topic.topic_id && (
+                <Button
+                  startIcon={<CancelRoundedIcon />}
+                  onClick={() => {
+                    handleEditMode(null);
                   }}
                 ></Button>
               )}
