@@ -6,7 +6,6 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
-import DeleteTopic from "./DeleteTopic";
 import Typography from "@material-ui/core/Typography";
 import TitleForm from "./TitleForm";
 import { Link } from "react-router-dom";
@@ -28,7 +27,7 @@ const useStyles = makeStyles({
     backgroundSize: "cover",
     flexDirection: "column",
     margin: 5,
-    borderRadius: "11px"
+    borderRadius: "10px"
   },
   media: {
     height: 20,
@@ -97,7 +96,6 @@ const Cards = props => {
               {editTopicId === topic.topic_id && (
                 <TitleForm updateTopic={updateTopic} topic={topic} />
               )}
-
               {editTopicId === topic.topic_id && (
                 <Button
                   startIcon={<SaveIcon />}
@@ -137,10 +135,8 @@ const Cards = props => {
                 height: "15px"
               }}
             >
-              VIEW
+              View
             </Link>
-
-            <DeleteTopic />
           </CardActions>
         </Card>
       </div>
