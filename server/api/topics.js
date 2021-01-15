@@ -42,11 +42,25 @@ router.post("/create", function(req, res) {
 		.then((data) => res.status(200).json(data))
 		.catch(() => {
 			res.status(500).json({
-				error: "Creating a new topi failed",
+				error: "Creating a new topic failed",
 			});
 		 });
 });
+router.delete("/:topic_id", function (req, res) {
+	const topicId = req.params.topic_id;
+	topicDb
+		.deleteSelectedTopic(topicId)
+		.then((data) => {
+			res.json(data);
+		})
 
+		.catch(() => {
+			res.status(500).json({
+				error: "delete selected topic failed ",
+			});
+		 });
+
+});
 router.put("/:topic_id", function (req, res) {
 
 	const topicId = req.params.topic_id;
@@ -130,5 +144,21 @@ router.put("/:topic_id/question/:question_id", function (req, res) {
 				error: "500 Internal Server Error",
 			});
 		 });
+});
+router.delete("/:topic_id/questions/:question_id", function (req, res) {
+	const topicId = req.params.topic_id;
+	const questionId = req.params.question_id;
+	topicDb
+		.deleteSelectedQuestion(topicId,questionId)
+		.then((data) => {
+			res.json(data);
+		})
+
+		.catch(() => {
+			res.status(500).json({
+				error: "delete selected question failed ",
+			});
+		 });
+
 });
 module.exports = router;
