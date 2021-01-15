@@ -1,33 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 
-const DeleteTopic = () => {
-  let [api, setApi] = useState([]);
-  console.log(api);
-
+const DeleteTopic = ({ data, id }) => {
   const TOKEN = localStorage.getItem("token");
-  useEffect(() => {
-    fetch("/api/topics/", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${TOKEN}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => setApi(data));
-  }, []);
+  const [api, setApi] = useState(data);
+  console.log(api);
   const handleClick = () => {
-    fetch(`/api/topics/${api.topic_id}`, {
+    console.log(id);
+
+    fetch(`/api/topics/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TOKEN}`
       }
     })
       .then(res => res.json())
-      .then(() => api.filter(topic => topic.id === api.topic_id))
+      .then(() => setApi(api.filter(topic => topic.topic_id !== id)))
       .catch(error => {
         console.log(error + "error fetching");
       });
+    // window.location = "/topics"
   };
 
   return (
@@ -40,9 +32,7 @@ const DeleteTopic = () => {
         width: "78px",
         height: "27px"
       }}
-      onClick={() => {
-        handleClick();
-      }}
+      onClick={() => handleClick(id)}
     >
       Delete
     </Button>

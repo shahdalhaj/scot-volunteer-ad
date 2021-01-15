@@ -1,9 +1,9 @@
 const config = {
 	development: {
-		user: "app_user",
+		user: "postgres",
 		host: "localhost",
 		database: "volunteer_ad",
-		password: "password",
+		password: "12345",
 		port: 5432,
 	},
 	production: {

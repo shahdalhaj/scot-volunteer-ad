@@ -47,6 +47,7 @@ function NewTopic() {
       documentName: "",
       documentLink: ""
     });
+    window.location = "/topics";
   };
 
   return (
