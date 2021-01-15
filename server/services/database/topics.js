@@ -28,6 +28,15 @@ const createNewTopic=( newTopicName ,documentName, documentLink)=> {
 
 };
 
+
+const deleteSelectedTopic=(topicId)=>{
+	console.log("testing");
+	console.log(topicId);
+	return pool
+		.query("DELETE FROM topics WHERE topic_id = $1", [topicId])
+		.then(() => getAllTopics());
+};
+
 const getAllQuestions = (id) => {
 	return pool.query("select * from questions where topic_id = $1" ,[id])
 		.then((result) => result.rows);
@@ -71,14 +80,23 @@ const updateQuestion =( newQuestion , id, questionId )=> {
 		});
 
 };
+const deleteSelectedQuestion=(topicId, questionId)=>{
+	console.log("question works");
+	console.log(questionId);
+	return pool
+		.query("DELETE FROM questions WHERE topic_id=$1 and question_id = $2", [topicId, questionId])
+		.then(() => getAllQuestions(topicId));
+};
 
 module.exports = {
 	getAllTopics,
 	getTopicById,
 	createNewTopic,
+	deleteSelectedTopic,
 	getAllQuestions,
 	getQuestionById,
 	createNewQuestion,
 	updateQuestion,
 	updateTopic,
+	deleteSelectedQuestion,
 };
