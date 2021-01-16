@@ -7,6 +7,9 @@ const Footer = () => {
       className="footer"
       style={{
         display: "flex",
+        position: "absolute",
+        bottom: "0px",
+        width: "100%",
         justifyContent: "space-between",
         flexDirection: "row",
         height: "120px",

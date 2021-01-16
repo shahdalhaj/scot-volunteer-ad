@@ -160,7 +160,7 @@ const Routes = () => {
           <SecuredRoute>
             <Route exact path="/about/" component={About}></Route>
             <Route exact path="/status/" component={Status}></Route>
-            <Route exact path="/blockslist/" component={BlocksList}></Route>
+            <Route exact path="/blocks/" component={BlocksList}></Route>
             <Route exact path="/topics/" component={Topics}></Route>
             <Route exact path="/topics/:id" component={Topic}></Route>
             <Route exact path="/createTopic" component={NewTopic}></Route>
