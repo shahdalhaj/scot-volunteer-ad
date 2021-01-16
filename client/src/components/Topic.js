@@ -1,6 +1,7 @@
 import { Typography, Button, TextField } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import EditQuestion from "./EditQuestion";
 
 const Topic = () => {
   let empty = "";
@@ -71,6 +72,7 @@ const Topic = () => {
           }}
         >
           {question.question_text}
+          <EditQuestion question={question} topicId={api.topic_id} />
         </Typography>
       </div>
     );

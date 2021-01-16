@@ -3,7 +3,8 @@ const router = express.Router();
 const topicDb = require("../services/database/topics");
 const passport = require("passport");
 
-router.get("/",passport.authenticate("jwt", { session: false }), (req, res) => {
+router.get("/", passport.authenticate("jwt", { session: false }),
+(req, res) => {
 	topicDb
 		.getAllTopics()
 		.then((data) => {
@@ -14,7 +15,8 @@ router.get("/",passport.authenticate("jwt", { session: false }), (req, res) => {
 			res.json(500);
 		});
 });
-router.get("/:topic_id", passport.authenticate("jwt", { session: false }),(req, res)=> {
+router.get("/:topic_id", passport.authenticate("jwt", { session: false }),
+(req, res)=> {
 
 	const topicId =Number(req.params.topic_id);
 	topicDb

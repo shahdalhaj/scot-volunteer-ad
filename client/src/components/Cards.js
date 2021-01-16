@@ -6,6 +6,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
+import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
+import DeleteTopic from "./DeleteTopic";
 import Typography from "@material-ui/core/Typography";
 import TitleForm from "./TitleForm";
 import { Link } from "react-router-dom";
@@ -104,6 +106,14 @@ const Cards = props => {
                   }}
                 ></Button>
               )}
+              {editTopicId === topic.topic_id && (
+                <Button
+                  startIcon={<CancelRoundedIcon />}
+                  onClick={() => {
+                    handleEditMode(null);
+                  }}
+                ></Button>
+              )}
               {editTopicId !== topic.topic_id && (
                 <Typography
                   onDoubleClick={() => handleEditMode(topic.topic_id)}
@@ -125,7 +135,7 @@ const Cards = props => {
               to={`/topics/${topic.topic_id}`}
               style={{
                 textDecoration: "none",
-                backgroundColor: "orangered",
+                backgroundColor: "orange",
                 border: "1px white solid",
                 borderRadius: "5rem",
                 color: "white",
@@ -137,6 +147,11 @@ const Cards = props => {
             >
               View
             </Link>
+            <DeleteTopic
+              id={topic.topic_id}
+              api={props.data}
+              setApi={props.setData}
+            />
           </CardActions>
         </Card>
       </div>
