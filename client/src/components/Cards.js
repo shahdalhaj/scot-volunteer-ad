@@ -148,7 +148,11 @@ const Cards = props => {
             >
               VIEW
             </Link>
-            <DeleteTopic data={props.data} id={topic.topic_id} />
+            <DeleteTopic
+              id={topic.topic_id}
+              api={props.data}
+              setApi={props.setData}
+            />
           </CardActions>
         </Card>
       </div>
