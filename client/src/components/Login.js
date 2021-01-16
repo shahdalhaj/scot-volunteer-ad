@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "orange"
   },
   form: {
-    width: "60%",
+    width: "90%",
     marginTop: theme.spacing(1)
   },
   submit: {
@@ -81,14 +81,13 @@ function Login() {
         container
         component="main"
         style={{
-          height: "40vh",
-          marginBottom: "8rem",
+          height: "30vh",
+          marginBottom: "10rem",
           marginTop: "2rem",
-          marginLeft: "15rem"
+          marginLeft: "27rem"
         }}
       >
         <CssBaseline />
-        <Grid item xs={false} sm={4} md={3} className={classes.image}></Grid>
         <Grid
           item
           xs={12}

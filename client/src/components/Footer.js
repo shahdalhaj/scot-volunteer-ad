@@ -17,6 +17,7 @@ const Footer = () => {
         padding: "10px",
         fontSize: "small",
         fontWeight: "900",
+        marginTop: "3rem",
         fontStyle: "inherit",
         color: "black",
         backgroundSize: "cover",
