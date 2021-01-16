@@ -79,18 +79,32 @@ const BlocksList = () => {
         Blocks List
       </Typography>
       {add && <BlocksForm createBlock={addBlock} updateBlock={updateBlock} />}
-      <Button
-        onClick={() => addToggle()}
-        variant="contained"
-        style={{
-          color: "white",
-          marginLeft: "60px",
-          backgroundColor: "orangered"
-        }}
-      >
-        Create a new block
-      </Button>
-
+      {add && (
+        <Button
+          onClick={() => addToggle()}
+          variant="contained"
+          style={{
+            color: "white",
+            marginLeft: "60px",
+            backgroundColor: "red"
+          }}
+        >
+          Cancle
+        </Button>
+      )}
+      {!add && (
+        <Button
+          onClick={() => addToggle()}
+          variant="contained"
+          style={{
+            color: "white",
+            marginLeft: "65px",
+            backgroundColor: "orangered"
+          }}
+        >
+          Create a new block
+        </Button>
+      )}
       <Block blocks={blocks} updateBlock={updateBlock} />
     </div>
   );
