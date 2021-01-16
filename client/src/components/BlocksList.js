@@ -1,11 +1,18 @@
+import { Typography } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
+import { Button } from "@material-ui/core";
 
 import Block from "./Block";
 import BlocksForm from "./BlocksForm";
 
 const BlocksList = () => {
   const [blocks, setBlocks] = useState([]);
+  const [add, setAdd] = useState(false);
   const TOKEN = localStorage.getItem("token");
+
+  const addToggle = () => {
+    setAdd(!add);
+  };
 
   useEffect(async () => {
     try {
@@ -62,10 +69,30 @@ const BlocksList = () => {
   };
 
   return (
-    <>
-      <BlocksForm createBlock={addBlock} updateBlock={updateBlock} />
+    <div style={{ marginTop: "1rem", marginBottom: "2rem" }}>
+      <Typography
+        style={{
+          fontSize: "43px",
+          marginLeft: "530px"
+        }}
+      >
+        Blocks List
+      </Typography>
+      {add && <BlocksForm createBlock={addBlock} updateBlock={updateBlock} />}
+      <Button
+        onClick={() => addToggle()}
+        variant="contained"
+        style={{
+          color: "white",
+          marginLeft: "60px",
+          backgroundColor: "orangered"
+        }}
+      >
+        Create a new block
+      </Button>
+
       <Block blocks={blocks} updateBlock={updateBlock} />
-    </>
+    </div>
   );
 };
 
