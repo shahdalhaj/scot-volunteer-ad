@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 
-const DeleteTopic = ({ data, id }) => {
+const DeleteTopic = ({ id, api, setApi }) => {
   const TOKEN = localStorage.getItem("token");
-  const [api, setApi] = useState(data);
-  console.log(api);
-  const handleClick = () => {
-    console.log(id);
 
+  const handleClick = () => {
     fetch(`/api/topics/${id}`, {
       method: "DELETE",
       headers: {
