@@ -16,7 +16,7 @@ import {
   Link,
   Redirect
 } from "react-router-dom";
-import { AppBar, Toolbar } from "@material-ui/core";
+import { AppBar } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -30,6 +30,7 @@ const logout = e => {
 
 const Routes = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const TOKEN = localStorage.getItem("token");
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -56,14 +57,18 @@ const Routes = () => {
           position="sticky"
           style={{ height: "70px", backgroundColor: "white" }}
         >
-          <Toolbar style={{ display: "flex", justifyContent: "flex-end" }}>
+          {TOKEN && (
             <div>
               <MenuIcon
                 className="menuicon"
                 aria-controls="simple-menu"
                 aria-haspopup="true"
                 onClick={handleClick}
-                style={{ color: "#ff7a3dfd" }}
+                style={{
+                  color: "#ff7a3dfd",
+                  marginLeft: "81rem",
+                  marginTop: "1rem"
+                }}
               ></MenuIcon>
               <Menu
                 id="simple-menu"
@@ -108,7 +113,6 @@ const Routes = () => {
                     Blocks
                   </Link>
                 </MenuItem>
-                {/* login and logout toggles  */}
                 {localStorage.getItem("token") ? (
                   <MenuItem
                     onClick={e => {
@@ -141,11 +145,29 @@ const Routes = () => {
                 )}
               </Menu>
             </div>
+          )}
+          {TOKEN && (
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <img
+                style={{
+                  height: "60px",
+                  position: "relative",
+                  right: "72rem",
+                  bottom: "44px",
+                  borderRadius: "20%"
+                }}
+                className="logo-img"
+                src="https://refmentors.org.uk/wp-content/uploads/2019/12/cropped-thumbnail_FB_cover-image_amend-final-Copy.jpg"
+                alt="RefMentors icon"
+              />
+            </div>
+          )}
+          {!TOKEN && (
             <img
               style={{
                 height: "60px",
                 position: "absolute",
-                left: "1px",
+                left: "4px",
                 top: "4px",
                 borderRadius: "20%"
               }}
@@ -153,7 +175,7 @@ const Routes = () => {
               src="https://refmentors.org.uk/wp-content/uploads/2019/12/cropped-thumbnail_FB_cover-image_amend-final-Copy.jpg"
               alt="RefMentors icon"
             />
-          </Toolbar>
+          )}
         </AppBar>
         <div>
           <Route path="/" exact component={Home} />
