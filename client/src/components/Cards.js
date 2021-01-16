@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     backgroundSize: "cover",
     flexDirection: "column",
     margin: 5,
-    borderRadius: "11px"
+    borderRadius: "10px"
   },
   media: {
     height: 20,
@@ -98,7 +98,6 @@ const Cards = props => {
               {editTopicId === topic.topic_id && (
                 <TitleForm updateTopic={updateTopic} topic={topic} />
               )}
-
               {editTopicId === topic.topic_id && (
                 <Button
                   startIcon={<SaveIcon />}
@@ -136,7 +135,7 @@ const Cards = props => {
               to={`/topics/${topic.topic_id}`}
               style={{
                 textDecoration: "none",
-                backgroundColor: "orangered",
+                backgroundColor: "orange",
                 border: "1px white solid",
                 borderRadius: "5rem",
                 color: "white",
@@ -146,7 +145,7 @@ const Cards = props => {
                 height: "15px"
               }}
             >
-              VIEW
+              View
             </Link>
             <DeleteTopic
               id={topic.topic_id}
