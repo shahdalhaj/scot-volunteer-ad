@@ -3,33 +3,47 @@ const router = express.Router();
 const topicDb = require("../services/database/topics");
 const passport = require("passport");
 
-router.get("/", passport.authenticate("jwt", { session: false }),
-(req, res) => {
-	topicDb
-		.getAllTopics()
-		.then((data) => {
-			res.json(data);
-		})
-		.catch((err) => {
-			console.error(err);
-			res.json(500);
-		});
-});
-router.get("/:topic_id", passport.authenticate("jwt", { session: false }),
-(req, res)=> {
-
-	const topicId =Number(req.params.topic_id);
-	topicDb
-		.getTopicById(topicId)
-		.then((data) => {
-			res.json(data);
-		})
-		.catch(() => {
-			res.status(500).json({
-				error: "500 Internal Server Error while loading topic page",
+router.get("/blocks/:block_id", passport.authenticate("jwt", { session: false }),
+	(req, res) => {
+		const blockId =Number(req.params.block_id);
+		topicDb
+			.getAllTopics(blockId)
+			.then((data) => {
+				res.json(data);
+			})
+			.catch((err) => {
+				console.error(err);
+				res.json(500);
 			});
-		});
-});
+	});
+router.get("/", passport.authenticate("jwt", { session: false }),
+	(req, res) => {
+		topicDb
+			.getAllTopics()
+			.then((data) => {
+				res.json(data);
+			})
+			.catch((err) => {
+				console.error(err);
+				res.json(500);
+			});
+	});
+router.get("/:topic_id", passport.authenticate("jwt", { session: false }),
+	(req, res)=> {
+
+		const topicId =Number(req.params.topic_id);
+		topicDb
+			.getTopicById(topicId)
+			.then((data) => {
+				res.json(data);
+			})
+			.catch(() => {
+				res.status(500).json({
+					error: "500 Internal Server Error while loading topic page",
+				});
+			});
+	});
+
 router.post("/create", function(req, res) {
 	const newTopicName = req.body.topic_name;
 	const documentName = req.body.document_name;
