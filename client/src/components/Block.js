@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import BlocksForm from "./BlocksForm";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import { Link } from "react-router-dom";
 
 const Block = ({ blocks, updateBlock }) => {
   const [edit, setEdit] = useState({ blockId: null, blockName: "" });
@@ -43,6 +44,27 @@ const Block = ({ blocks, updateBlock }) => {
                   }}
                 />
               </IconButton>
+              <Link
+                to="/topics"
+                style={{
+                  textDecoration: "none",
+                  backgroundColor: "orange",
+                  border: "1px white solid",
+                  borderRadius: "0.5rem",
+                  fontSize: "small",
+                  float: "right",
+                  color: "white",
+                  paddingLeft: 8,
+                  paddingTop: 5,
+                  paddingRight: 8,
+                  paddingBottom: 20,
+                  marginRight: "2rem",
+                  width: "60px",
+                  height: "13px"
+                }}
+              >
+                VIEW
+              </Link>
             </Typography>
           </CardContent>
         </Card>
