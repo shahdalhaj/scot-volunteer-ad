@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-
 const DeleteTopic = ({ id, api, setApi }) => {
   const TOKEN = localStorage.getItem("token");
 
@@ -16,9 +15,7 @@ const DeleteTopic = ({ id, api, setApi }) => {
       .catch(error => {
         console.log(error + "error fetching");
       });
-    // window.location = "/topics"
   };
-
   return (
     <Button
       style={{
@@ -35,5 +32,4 @@ const DeleteTopic = ({ id, api, setApi }) => {
     </Button>
   );
 };
-
 export default DeleteTopic;

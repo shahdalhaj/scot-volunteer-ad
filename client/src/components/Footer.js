@@ -7,6 +7,9 @@ const Footer = () => {
       className="footer"
       style={{
         display: "flex",
+        position: "absolute",
+        bottom: "0px",
+        width: "100%",
         justifyContent: "space-between",
         flexDirection: "row",
         height: "120px",
@@ -14,6 +17,7 @@ const Footer = () => {
         padding: "10px",
         fontSize: "small",
         fontWeight: "900",
+        marginTop: "3rem",
         fontStyle: "inherit",
         color: "black",
         backgroundSize: "cover",

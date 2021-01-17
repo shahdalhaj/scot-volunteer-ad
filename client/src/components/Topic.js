@@ -1,6 +1,7 @@
 import { Typography, Button, TextField } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import EditQuestion from "./EditQuestion";
 
 const Topic = () => {
   let empty = "";
@@ -71,6 +72,7 @@ const Topic = () => {
           }}
         >
           {question.question_text}
+          <EditQuestion question={question} topicId={api.topic_id} />
         </Typography>
       </div>
     );
@@ -148,14 +150,7 @@ const Topic = () => {
           onChange={handleChange}
         />
       )}
-      {/*{questionState && (
-        <Button
-          variant="outlined"
-          label="Enter new question"
-          onClick={setQuestionState(false)}>
-            CANCEL
-        </Button>
-      )}*/}
+
       <Button
         style={{
           border: "orangered 1px solid",
@@ -169,9 +164,9 @@ const Topic = () => {
       <a
         href={`mailto:user@gmail.com?cc=user@gmail.com&bcc=user@gmail.com&Subject=${api.topic_name}&body=Hi Volunteer,${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}
       Thank you for your interest in volunteering for RefMentors.
+
       We have prepared these list of questions for you to take for ${api.topic_name} 
       Here is the questions :
-      
       Correct this Question,(What was she doing nowadays?)
       when we need to use Past perfect?
       what is the past tens of the verb do?
@@ -201,7 +196,6 @@ const Topic = () => {
         SEND TOPIC
       </a>
       {questionState && <Button onClick={handleNewQuestion}> Submit</Button>}
-      {questionState && <Button onClick={submitQuestion}> cancel</Button>}
 
       <Link
         to="/topics"

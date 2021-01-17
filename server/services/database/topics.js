@@ -28,19 +28,15 @@ const createNewTopic=( newTopicName ,documentName, documentLink)=> {
 
 };
 
-const deleteSelectedTopic=(topicId)=>{
-	console.log("testing success");
-	console.log(topicId);
-	return (pool
-	  .query("DELETE FROM questions WHERE topic_id =$1", [topicId])
-	  .then(() => {
+const deleteSelectedTopic= (topicId) => {
+	return pool
+		.query("DELETE FROM questions WHERE topic_id =$1", [topicId])
+		.then(() => {
+			pool.query("DELETE FROM topics WHERE topic_id=$1", [topicId]);
+		})
+		.then(() => getAllTopics());
+};
 
-			pool
-		  .query("DELETE FROM topics WHERE topic_id=$1", [topicId]);
-
-	  })
-	  .then(() => getAllTopics()));
-};  
 const getAllQuestions = (id) => {
 	return pool.query("select * from questions where topic_id = $1" ,[id])
 		.then((result) => result.rows);
