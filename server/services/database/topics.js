@@ -3,7 +3,11 @@ const config = require("../../config");
 const pool = new Pool(config);
 
 
-const getAllTopics = () => {
+const getAllTopicsByBlockId = (id) => {
+	return pool.query("select * from topics where block_id=$1 ORDER BY topic_id",[id])
+		.then((result) => result.rows);
+};
+const getAllTopics= () => {
 	return pool.query("select * from topics ORDER BY topic_id")
 		.then((result) => result.rows);
 };
@@ -99,4 +103,5 @@ module.exports = {
 	updateQuestion,
 	updateTopic,
 	deleteSelectedQuestion,
+	getAllTopicsByBlockId,
 };
