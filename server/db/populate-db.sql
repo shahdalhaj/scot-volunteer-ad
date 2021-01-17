@@ -3,15 +3,13 @@
 INSERT INTO users (email, password) values ('admin@cyf.org', 'admin_password');
 INSERT INTO users (email, password) values ('user@cyf.org', 'user_password');
 
-
-INSERT INTO blocks (block_name) VALUES( 'Block 1 of topics');
-INSERT INTO blocks (block_name) VALUES( 'Block 2 of topics');
-
-
-INSERT INTO topics ( topic_name, document_name, document_link) VALUES('eginners English', 'Beginners English', 'www.google.com');
-INSERT INTO topics ( topic_name, document_name, document_link) VALUES('Intermediate English', 'Intermediate English', 'www.bing.com');
+INSERT INTO blocks (block_name) VALUES( 'Language skills');
+INSERT INTO blocks (block_name) VALUES( 'Programming skills');
 
 
+
+INSERT INTO topics ( topic_name, document_name, document_link, block_id) VALUES('eginners English', 'Beginners English', 'www.google.com', 1);
+INSERT INTO topics ( topic_name, document_name, document_link, block_id) VALUES('javaScript ', 'javaScript', 'www.javaScript.com', 2);
 
 
 INSERT INTO volunteers ( email) VALUES('Volunteer1@email.com');
