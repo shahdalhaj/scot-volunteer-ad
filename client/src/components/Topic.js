@@ -2,6 +2,7 @@ import { Typography, Button, TextField } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import EditQuestion from "./EditQuestion";
+import DeleteQuestion from "./DeleteQuestion";
 
 const Topic = () => {
   let empty = "";
@@ -23,8 +24,7 @@ const Topic = () => {
       .then(res => res.json())
       .then(data => setApi(data));
   }, []);
-
-  useEffect(() => {
+  const getAllQuestions = () => {
     fetch(`/api/topics/${id}/questions`, {
       method: "GET",
       headers: {
@@ -33,6 +33,9 @@ const Topic = () => {
     })
       .then(res => res.json())
       .then(data => setQuestions(data));
+  };
+  useEffect(() => {
+    getAllQuestions();
   }, []);
   const handleChange = event => {
     setAddQuestion(event.target.value);
@@ -59,7 +62,8 @@ const Topic = () => {
         if (data.error) {
           throw new Error(data.error);
         }
-        window.location.reload();
+        setAddQuestion(" ");
+        getAllQuestions();
       });
   };
   const renderQuestions = (question, index) => {
@@ -73,8 +77,14 @@ const Topic = () => {
           }}
         >
           {question.question_text}
-          <EditQuestion question={question} topicId={api.topic_id} />
         </Typography>
+        <EditQuestion question={question} topicId={api.topic_id} />
+        <DeleteQuestion
+          id={question.question_id}
+          questions={questions}
+          setQuestions={setQuestions}
+          topicId={api.topic_id}
+        />
       </div>
     );
   };
