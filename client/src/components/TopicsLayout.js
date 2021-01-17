@@ -3,9 +3,7 @@ import Cards from "./Cards";
 
 const TopicsLayout = () => {
   let [api, setApi] = useState([]);
-
-  const TOKEN = localStorage.getItem("token");
-  useEffect(() => {
+  const getAllData = () => {
     fetch("/api/topics/", {
       method: "GET",
       headers: {
@@ -14,11 +12,15 @@ const TopicsLayout = () => {
     })
       .then(res => res.json())
       .then(data => setApi(data));
+  };
+  const TOKEN = localStorage.getItem("token");
+  useEffect(() => {
+    getAllData();
   }, []);
 
   return (
     <div>
-      <Cards setData={setApi} data={api} />
+      <Cards setData={setApi} data={api} getAllData={getAllData()} />
     </div>
   );
 };

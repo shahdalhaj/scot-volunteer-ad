@@ -12,6 +12,7 @@ const Topic = () => {
   const [questions, setQuestions] = useState([]);
   const [addQuestion, setAddQuestion] = useState("");
   const TOKEN = localStorage.getItem("token");
+
   useEffect(() => {
     fetch(`/api/topics/${id}`, {
       method: "GET",
