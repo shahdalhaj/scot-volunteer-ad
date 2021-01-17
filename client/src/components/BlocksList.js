@@ -8,6 +8,7 @@ import BlocksForm from "./BlocksForm";
 const BlocksList = () => {
   const [blocks, setBlocks] = useState([]);
   const [add, setAdd] = useState(false);
+
   const TOKEN = localStorage.getItem("token");
 
   const addToggle = () => {
@@ -43,11 +44,8 @@ const BlocksList = () => {
           "Content-Type": "application/json"
         }
       });
+
       getBlocks();
-      //   if (response.status === 200) {
-      //     // setBlocks([...blocks, blockName]);
-      //     getBlocks()
-      //   }
     } catch (err) {
       console.error(err.message);
     }
@@ -57,7 +55,7 @@ const BlocksList = () => {
     if (!newValue || /^s*$/.test(newValue)) return;
     try {
       const body = { block_name: newValue };
-      const response = await fetch(`/api/blocks/${blockId}`, {
+      await fetch(`/api/blocks/${blockId}`, {
         method: "PUT",
         body: JSON.stringify(body),
         headers: {
@@ -65,7 +63,7 @@ const BlocksList = () => {
           "Content-Type": "application/json"
         }
       });
-      if (response === 200);
+      getBlocks();
     } catch (err) {
       console.error(err.message);
     }

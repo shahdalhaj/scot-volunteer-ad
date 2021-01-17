@@ -16,13 +16,13 @@ const BlockForm = ({ edit, createBlock, onSubmit }) => {
   const handleCreateBlock = e => {
     e.preventDefault();
     createBlock(input);
-    setInput("");
+    setInput(" ");
   };
 
-  const handleUpdateBlock = () => {
-    // e.preventDefault();
+  const handleUpdateBlock = e => {
+    e.preventDefault();
     onSubmit(input);
-    setInput("");
+    setInput(" ");
   };
 
   const updateForm = (

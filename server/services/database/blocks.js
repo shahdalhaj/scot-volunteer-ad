@@ -3,7 +3,7 @@ const config = require("../../config");
 const pool = new Pool(config);
 
 const getAllBlocks = () => {
-	return pool.query("select * from blocks").then((result) => result.rows);
+	return pool.query("select * from blocks order by block_id").then((result) => result.rows);
 };
 
 const getBlockById = (id) => {
