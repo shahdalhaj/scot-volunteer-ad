@@ -13,8 +13,7 @@ const BlocksList = () => {
   const addToggle = () => {
     setAdd(!add);
   };
-
-  useEffect(async () => {
+  const getBlocks = async () => {
     try {
       const response = await fetch("/api/blocks", {
         method: "GET",
@@ -27,12 +26,15 @@ const BlocksList = () => {
     } catch (err) {
       console.error(err.message);
     }
+  };
+  useEffect(() => {
+    getBlocks();
   }, []);
 
   const addBlock = async blockName => {
     try {
       const body = { block_name: blockName };
-      const response = await fetch("/api/blocks", {
+      await fetch("/api/blocks", {
         method: "POST",
         body: JSON.stringify(body),
 
@@ -41,9 +43,11 @@ const BlocksList = () => {
           "Content-Type": "application/json"
         }
       });
-      if (response.status === 200) {
-        setBlocks([...blocks, blockName]);
-      }
+      getBlocks();
+      //   if (response.status === 200) {
+      //     // setBlocks([...blocks, blockName]);
+      //     getBlocks()
+      //   }
     } catch (err) {
       console.error(err.message);
     }
@@ -62,7 +66,6 @@ const BlocksList = () => {
         }
       });
       if (response === 200);
-      window.location = "/blockslist";
     } catch (err) {
       console.error(err.message);
     }
@@ -105,7 +108,7 @@ const BlocksList = () => {
           Create a new block
         </Button>
       )}
-      <Block blocks={blocks} updateBlock={updateBlock} />
+      <Block blocks={blocks} updateBlock={updateBlock} setBlocks={setBlocks} />
     </div>
   );
 };

@@ -18,7 +18,6 @@ function NewTopic() {
     };
     setNewTopic(updateNewTopic);
   };
-
   const handleSubmit = event => {
     event.preventDefault();
     fetch(`/api/topics/create`, {

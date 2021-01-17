@@ -14,14 +14,15 @@ const BlockForm = ({ edit, createBlock, onSubmit }) => {
   };
 
   const handleCreateBlock = e => {
-    e.preventDefault;
+    e.preventDefault();
     createBlock(input);
     setInput("");
   };
 
-  const handleUpdateBlock = e => {
-    e.preventDefault;
+  const handleUpdateBlock = () => {
+    // e.preventDefault();
     onSubmit(input);
+    setInput("");
   };
 
   const updateForm = (

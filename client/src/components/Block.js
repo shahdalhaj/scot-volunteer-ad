@@ -9,8 +9,9 @@ import {
 import BlocksForm from "./BlocksForm";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import { Link } from "react-router-dom";
+import DeleteBlock from "./DeleteBlock";
 
-const Block = ({ blocks, updateBlock }) => {
+const Block = ({ blocks, updateBlock, setBlocks }) => {
   const [edit, setEdit] = useState({ blockId: null, blockName: "" });
   const submitUpdate = blockName => {
     updateBlock(edit.blockId, blockName);
@@ -30,6 +31,7 @@ const Block = ({ blocks, updateBlock }) => {
           variant="outlined"
           style={{ marginTop: 5, background: "#faf0be" }}
         >
+          {console.log(block.block_id)}
           <CardContent>
             <Typography variant="h6">
               {block.block_name}
@@ -44,6 +46,12 @@ const Block = ({ blocks, updateBlock }) => {
                   }}
                 />
               </IconButton>
+              <DeleteBlock
+                id={block.block_id}
+                blocks={blocks}
+                setBlocks={setBlocks}
+              />
+
               <Link
                 to="/topics"
                 style={{
