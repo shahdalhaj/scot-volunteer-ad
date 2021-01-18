@@ -9,6 +9,8 @@ import Login from "./components/Login";
 import BlocksList from "./components/BlocksList";
 import Topics from "./components/Topics";
 import NewTopic from "./components/NewTopic";
+import Assessment from "./components/Assessment";
+import Confirmation from "./components/Confitmation";
 
 import {
   BrowserRouter as Router,
@@ -186,6 +188,8 @@ const Routes = () => {
             <Route exact path="/topics/" component={Topics}></Route>
             <Route exact path="/topics/:id" component={Topic}></Route>
             <Route exact path="/createtopic" component={NewTopic}></Route>
+            <Route exact path="/assessment" component={Assessment}></Route>
+            <Route exact path="/confirmation" component={Confirmation}></Route>
           </SecuredRoute>
           <Route path="/login/" component={Login} />
         </div>
