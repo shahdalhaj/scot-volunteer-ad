@@ -90,7 +90,7 @@ const BlocksList = () => {
             backgroundColor: "red"
           }}
         >
-          Cancle
+          CANCEL
         </Button>
       )}
       {!add && (

@@ -13,16 +13,15 @@ const BlockForm = ({ edit, createBlock, onSubmit }) => {
     setInput(e.target.value);
   };
 
-  const handleCreateBlock = e => {
-    e.preventDefault();
+  const handleCreateBlock = () => {
     createBlock(input);
     setInput(" ");
   };
 
-  const handleUpdateBlock = e => {
-    e.preventDefault();
+  const handleUpdateBlock = () => {
+    // e.preventDefault();
     onSubmit(input);
-    setInput(" ");
+    setInput("");
   };
 
   const updateForm = (
@@ -63,8 +62,11 @@ const BlockForm = ({ edit, createBlock, onSubmit }) => {
           <Button
             type="submit"
             variant="contained"
-            color="primary"
-            style={{ marginTop: 5 }}
+            style={{
+              marginTop: 5,
+              backgroundColor: "orangered",
+              color: "white"
+            }}
           >
             Add
           </Button>
