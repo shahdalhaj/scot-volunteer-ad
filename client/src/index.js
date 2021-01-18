@@ -108,7 +108,7 @@ const Routes = () => {
                   <Link
                     className="nav-link"
                     style={{ color: "#ff7a3dfd", backgroundColor: "white" }}
-                    to="/BlocksList"
+                    to="/blocks"
                   >
                     Blocks
                   </Link>
@@ -185,7 +185,7 @@ const Routes = () => {
             <Route exact path="/blocks/" component={BlocksList}></Route>
             <Route exact path="/topics/" component={Topics}></Route>
             <Route exact path="/topics/:id" component={Topic}></Route>
-            <Route exact path="/createTopic" component={NewTopic}></Route>
+            <Route exact path="/createtopic" component={NewTopic}></Route>
           </SecuredRoute>
           <Route path="/login/" component={Login} />
         </div>

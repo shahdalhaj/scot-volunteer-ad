@@ -38,8 +38,11 @@ const BlockForm = ({ edit, createBlock, onSubmit }) => {
           <Button
             type="submit"
             variant="contained"
-            color="primary"
-            style={{ marginTop: 5 }}
+            style={{
+              marginTop: 5,
+              color: "white",
+              backgroundColor: "orangered"
+            }}
           >
             Update
           </Button>

@@ -183,7 +183,7 @@ const Cards = props => {
         >
           <CardActions>
             <Link
-              to="/CreateTopic"
+              to="/createtopic"
               style={{
                 textDecoration: "none",
                 backgroundColor: "orangered",
