@@ -17,9 +17,13 @@ const DeleteBlock = ({ id, blocks, setBlocks }) => {
       });
   };
   return (
-    <div>
-      <button className="btn btn-danger" onClick={() => deleteBlock(id)}>
-        DELETE me
+    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <button
+        className="btn btn-danger"
+        style={{ height: "38px", width: "70px", fontSize: "small" }}
+        onClick={() => deleteBlock(id)}
+      >
+        DELETE
       </button>
     </div>
   );

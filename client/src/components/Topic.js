@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import EditQuestion from "./EditQuestion";
 import DeleteQuestion from "./DeleteQuestion";
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
 
 const Topic = () => {
   let empty = "";
@@ -172,8 +174,22 @@ const Topic = () => {
       >
         Add A New Question
       </Button>
-      <a
-        href={`mailto:user@gmail.com?cc=user@gmail.com&bcc=user@gmail.com&Subject=${api.topic_name}&body=Hi Volunteer,${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}
+      <div>
+        {" "}
+        <Button
+          style={{
+            backgroundColor: "orangered",
+            border: "1px white solid",
+            color: "white",
+            width: "180px",
+            height: "30px",
+            marginLeft: "23rem",
+            position: "relative",
+            top: "2.8rem"
+          }}
+        >
+          <a
+            href={`mailto:user@gmail.com?cc=user@gmail.com&bcc=user@gmail.com&Subject=${api.topic_name}&body=Hi Volunteer,${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}
       Thank you for your interest in volunteering for RefMentors.
 
       We have prepared these list of questions for you to take for ${api.topic_name} 
@@ -187,47 +203,48 @@ const Topic = () => {
       Once completed, we will call or email you to discus next steps.
       Any questions please let us know .
       RefMentors `}
-        target="_blank"
-        style={{
-          marginTop: "1rem",
-          textDecoration: "none",
-          backgroundColor: "orangered",
-          border: "1px white solid",
-          color: "white",
-          borderRadius: "5px",
-          paddingLeft: 25,
-          paddingBottom: 15,
-          paddingTop: "10px",
-          width: "120px",
-          height: "13px",
-          marginBottom: "15px",
-          fontSize: "15px"
-        }}
-      >
-        SEND TOPIC
-      </a>
-      {questionState && <Button onClick={handleNewQuestion}> Submit</Button>}
+            target="_blank"
+            style={{
+              textDecoration: "none",
+              color: "white"
+            }}
+          >
+            <MailOutlineIcon
+              style={{ position: "absolute", top: "4px", left: "5px" }}
+            />
+            SEND TOPIC
+          </a>
+        </Button>
+      </div>
 
-      <Link
-        to="/topics"
-        style={{
-          marginTop: "1rem",
-          textDecoration: "none",
-          backgroundColor: "orangered",
-          border: "1px white solid",
-          color: "white",
-          borderRadius: "5px",
-          paddingLeft: 25,
-          paddingBottom: 15,
-          paddingTop: "10px",
-          width: "120px",
-          height: "13px",
-          marginBottom: "15px",
-          fontSize: "15px"
-        }}
-      >
-        BACK TO TOPICS
-      </Link>
+      {questionState && <Button onClick={handleNewQuestion}> Submit</Button>}
+      <div>
+        <Button
+          style={{
+            backgroundColor: "orangered",
+            border: "1px white solid",
+            color: "white",
+            width: "180px",
+            height: "30px",
+            marginTop: "1rem",
+            marginBottom: "1rem",
+            marginRight: "23rem"
+          }}
+        >
+          <Link
+            to="/topics"
+            style={{
+              textDecoration: "none",
+              color: "white"
+            }}
+          >
+            <NavigateBeforeIcon
+              style={{ position: "absolute", top: "4px", left: "5px" }}
+            />
+            Blocks
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 };

@@ -4,10 +4,9 @@ import {
   CardContent,
   Typography,
   Container,
-  IconButton
+  Button
 } from "@material-ui/core";
 import BlocksForm from "./BlocksForm";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import { Link } from "react-router-dom";
 import DeleteBlock from "./DeleteBlock";
 
@@ -29,51 +28,64 @@ const Block = ({ blocks, updateBlock, setBlocks }) => {
       {blocks.map(block => (
         <Card
           variant="outlined"
-          style={{ marginTop: 5, background: "#faf0be" }}
+          style={{ marginTop: 5, background: "#faf0be", height: "auto" }}
         >
           {console.log(block.block_id)}
           <CardContent>
-            <Typography variant="h6">
+            <Typography
+              variant="h6"
+              style={{
+                marginLeft: 5,
+                fontFamily: "Georgia, serif",
+                fontWeight: "bold"
+              }}
+            >
               {block.block_name}
-              <IconButton style={{ float: "right" }}>
-                <EditOutlinedIcon
-                  style={{ color: "maginta" }}
-                  onClick={() => {
-                    setEdit({
-                      blockId: block.block_id,
-                      blockName: block.block_name
-                    });
-                  }}
-                />
-              </IconButton>
+            </Typography>
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <Button
+                style={{
+                  backgroundColor: "#000000",
+                  color: "white",
+                  marginRight: 7
+                }}
+                onClick={() => {
+                  setEdit({
+                    blockId: block.block_id,
+                    blockName: block.block_name
+                  });
+                }}
+              >
+                EDIT
+              </Button>
+
               <DeleteBlock
+                style={{ marginRight: 7 }}
                 id={block.block_id}
                 blocks={blocks}
                 setBlocks={setBlocks}
               />
-
-              <Link
-                to="/topics"
+              <Button
                 style={{
-                  textDecoration: "none",
                   backgroundColor: "orange",
                   border: "1px white solid",
-                  borderRadius: "0.5rem",
+                  borderRadius: "0.3rem",
                   fontSize: "small",
-                  float: "right",
-                  color: "white",
-                  paddingLeft: 8,
-                  paddingTop: 5,
-                  paddingRight: 8,
-                  paddingBottom: 20,
-                  marginRight: "2rem",
-                  width: "60px",
-                  height: "13px"
+                  marginLeft: 7
                 }}
               >
-                VIEW
-              </Link>
-            </Typography>
+                {" "}
+                <Link
+                  to="/topics"
+                  style={{
+                    textDecoration: "none",
+                    color: "white"
+                  }}
+                >
+                  VIEW
+                </Link>
+              </Button>
+            </div>
           </CardContent>
         </Card>
       ))}

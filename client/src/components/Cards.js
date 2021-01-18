@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import TitleForm from "./TitleForm";
 import { Link } from "react-router-dom";
 import SaveIcon from "@material-ui/icons/Save";
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 
 const useStyles = makeStyles({
   root: {
@@ -87,7 +88,7 @@ const Cards = props => {
         <Card
           className={classes.root}
           key={index}
-          style={{ width: "20rem", height: "10rem" }}
+          style={{ width: "20rem", height: "8.6rem" }}
         >
           <CardActionArea>
             <CardMedia
@@ -131,22 +132,26 @@ const Cards = props => {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Link
-              to={`/topics/${topic.topic_id}`}
+            <Button
               style={{
-                textDecoration: "none",
-                backgroundColor: "orange",
+                backgroundColor: "orangered",
                 border: "1px white solid",
                 borderRadius: "5rem",
-                color: "white",
-                paddingLeft: 25,
-                paddingBottom: 10,
-                width: "60px",
-                height: "15px"
+                width: "78px",
+                height: "27px"
               }}
             >
-              View
-            </Link>
+              <Link
+                to={`/topics/${topic.topic_id}`}
+                style={{
+                  textDecoration: "none",
+                  color: "white"
+                }}
+              >
+                View
+              </Link>
+            </Button>
+
             <DeleteTopic
               id={topic.topic_id}
               api={props.data}
@@ -179,11 +184,11 @@ const Cards = props => {
 
         <Card
           className={classes.root}
-          style={{ width: "25rem", height: "10rem" }}
+          style={{ width: "25rem", height: "8.6rem" }}
         >
           <CardActions>
             <Link
-              to="/CreateTopic"
+              to="/createtopic"
               style={{
                 textDecoration: "none",
                 backgroundColor: "orangered",
@@ -198,6 +203,30 @@ const Cards = props => {
           </CardActions>
         </Card>
       </div>
+      <Button
+        style={{
+          backgroundColor: "orangered",
+          border: "1px white solid",
+          color: "white",
+          width: "180px",
+          height: "30px",
+          marginTop: "1rem",
+          marginLeft: "17rem"
+        }}
+      >
+        <Link
+          to="/blocks"
+          style={{
+            textDecoration: "none",
+            color: "white"
+          }}
+        >
+          <NavigateBeforeIcon
+            style={{ position: "absolute", top: "4px", left: "5px" }}
+          />{" "}
+          Blocks
+        </Link>
+      </Button>
     </div>
   );
 };

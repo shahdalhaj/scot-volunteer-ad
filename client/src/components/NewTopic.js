@@ -138,30 +138,30 @@ function NewTopic() {
           backgroundColor: "orangered",
           color: "white",
           fontSize: "15px",
-          width: "120px"
+          width: "120px",
+          marginRight: "0.4rem"
         }}
         variant="contained"
       >
         Submit
       </Button>
-      <Link
-        to="/topics"
+      <Button
         style={{
-          textDecoration: "none",
           backgroundColor: "orangered",
-          border: "1px white solid",
           color: "white",
-          borderRadius: "5px",
-          paddingLeft: 25,
-          paddingBottom: 15,
-          paddingTop: "10px",
-          width: "120px",
-          height: "13px",
           fontSize: "15px"
         }}
       >
-        BACK TO TOPICS
-      </Link>
+        <Link
+          to="/topics"
+          style={{
+            textDecoration: "none",
+            color: "white"
+          }}
+        >
+          BACK TO TOPICS
+        </Link>
+      </Button>
     </div>
   );
 }
