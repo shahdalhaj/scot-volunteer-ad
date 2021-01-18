@@ -83,7 +83,7 @@ function Login() {
         style={{
           height: "30vh",
           marginBottom: "10rem",
-          marginTop: "2rem",
+          marginTop: "6rem",
           marginLeft: "27rem"
         }}
       >

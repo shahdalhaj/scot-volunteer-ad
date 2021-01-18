@@ -28,7 +28,7 @@ const Block = ({ blocks, updateBlock, setBlocks }) => {
       {blocks.map(block => (
         <Card
           variant="outlined"
-          style={{ marginTop: 5, background: "#faf0be" }}
+          style={{ marginTop: 5, background: "#faf0be", height: "auto" }}
         >
           {console.log(block.block_id)}
           <CardContent>
