@@ -27,7 +27,7 @@ function TitleForm(props) {
     >
       <TextField
         id="outlined-basic"
-        label="Outlined"
+        label="Topic Title"
         variant="outlined"
         onChange={handleChange}
       />
