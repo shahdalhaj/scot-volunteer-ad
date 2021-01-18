@@ -1,12 +1,28 @@
 import { Typography, Button } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 const Assessment = () => {
   let [api, setApi] = useState([]);
+  let questionsA = {};
   const [questions, setQuestions] = useState([]);
+  const [answers, setAnswers] = useState(questionsA);
   const TOKEN = localStorage.getItem("token");
+
+  const handleChange = event => {
+    let updateAnswers = {
+      ...answers,
+      [event.target.name]: event.target.value
+    };
+    setAnswers(updateAnswers);
+    console.log(updateAnswers);
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    setAnswers(" ");
+    window.location = "./confirmation";
+  };
 
   useEffect(() => {
     fetch(`/api/topics/${1}`, {
@@ -51,6 +67,9 @@ const Assessment = () => {
           <Typography style={{}}>{question.question_text}</Typography>
         </button>
         <TextareaAutosize
+          onChange={handleChange}
+          name={questionsA}
+          value={answers.updateAnswers}
           rowsMax={4}
           aria-label="maximum height"
           placeholder="Enter Your Answer"
@@ -142,16 +161,9 @@ const Assessment = () => {
             marginBottom: "1rem",
             marginRight: "23rem"
           }}
+          onClick={handleSubmit}
         >
-          <Link
-            to="/topics"
-            style={{
-              textDecoration: "none",
-              color: "white"
-            }}
-          >
-            SUBMIT
-          </Link>
+          SUBMIT
         </Button>
       </div>
     </div>
