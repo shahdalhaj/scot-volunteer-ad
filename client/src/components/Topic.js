@@ -241,7 +241,7 @@ const Topic = () => {
             <NavigateBeforeIcon
               style={{ position: "absolute", top: "4px", left: "5px" }}
             />
-            Blocks
+            TOPICS
           </Link>
         </Button>
       </div>
