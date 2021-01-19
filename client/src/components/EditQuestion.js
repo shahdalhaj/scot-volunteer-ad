@@ -38,7 +38,10 @@ const EditQuestion = ({ question, topicId }) => {
         id={`id${question.question_id}`}
         onSubmit={() => setText(question.question_text)}
       >
-        <div className="modal-dialog">
+        <div
+          className="modal-dialog"
+          style={{ backgroundColor: "yellow", marginTop: "10rem" }}
+        >
           <div className="modal-content">
             <div className="modal-header">
               <h4 className="modal-title">Edit question</h4>
@@ -56,6 +59,7 @@ const EditQuestion = ({ question, topicId }) => {
                 type="text"
                 className="form-contol"
                 value={text}
+                style={{ width: "100%" }}
                 onChange={event => setText(event.target.value)}
               />
             </div>
@@ -64,6 +68,7 @@ const EditQuestion = ({ question, topicId }) => {
                 type="button"
                 className="btn btn-danger"
                 data-dismiss="modal"
+                style={{ fontSize: "small" }}
                 onClick={() => editQuestionText(topicId, question.question_id)}
               >
                 Edit

@@ -193,6 +193,8 @@ const Routes = () => {
           </SecuredRoute>
           <Route path="/login/" component={Login} />
         </div>
+      </div>
+      <div>
         <Footer />
       </div>
     </Router>

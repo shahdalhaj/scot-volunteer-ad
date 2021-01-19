@@ -70,7 +70,7 @@ const BlocksList = () => {
   };
 
   return (
-    <div style={{ marginTop: "1rem", marginBottom: "2rem" }}>
+    <div style={{ marginTop: "1rem", height: "64vh", marginBottom: "7rem" }}>
       <Typography
         style={{
           fontSize: "43px",

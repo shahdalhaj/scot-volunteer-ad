@@ -64,7 +64,9 @@ const Assessment = () => {
           }}
         >
           {" "}
-          <Typography style={{}}>{question.question_text}</Typography>
+          <Typography style={{ fontFamily: "Georgia, serif" }}>
+            {question.question_text}
+          </Typography>
         </button>
         <TextareaAutosize
           onChange={handleChange}
@@ -112,15 +114,6 @@ const Assessment = () => {
       >
         {api.topic_name} Assessment
       </Typography>
-      <a
-        style={{
-          marginBottom: "0.2rem",
-          marginRight: "430px"
-        }}
-        href={api.document_link}
-      >
-        {api.document_name}
-      </a>
       <Typography
         style={{
           marginTop: "0.5rem",
@@ -140,7 +133,7 @@ const Assessment = () => {
       >
         <Typography
           style={{
-            fontFamily: "georgia"
+            fontFamily: "Georgia, serif"
           }}
         >
           {" "}
