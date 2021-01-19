@@ -25,6 +25,7 @@ const DeleteQuestion = ({ id, questions, setQuestions, topicId }) => {
       <button
         onClick={() => handleClick(id, topicId)}
         className="btn btn-danger"
+        style={{ fontSize: "small" }}
       >
         DELETE
       </button>

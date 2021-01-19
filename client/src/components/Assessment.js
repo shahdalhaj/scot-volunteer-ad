@@ -64,7 +64,9 @@ const Assessment = () => {
           }}
         >
           {" "}
-          <Typography style={{}}>{question.question_text}</Typography>
+          <Typography style={{ fontFamily: "Georgia, serif" }}>
+            {question.question_text}
+          </Typography>
         </button>
         <TextareaAutosize
           onChange={handleChange}
@@ -131,7 +133,7 @@ const Assessment = () => {
       >
         <Typography
           style={{
-            fontFamily: "georgia"
+            fontFamily: "Georgia, serif"
           }}
         >
           {" "}

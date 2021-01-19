@@ -71,22 +71,40 @@ const Topic = () => {
   const renderQuestions = (question, index) => {
     return (
       <div key={index}>
-        <Typography
-          style={{
-            marginTop: "0.3rem",
-            marginRight: "180px",
-            fontSize: "20px"
-          }}
-        >
-          {question.question_text}
-        </Typography>
-        <EditQuestion question={question} topicId={api.topic_id} />
-        <DeleteQuestion
-          id={question.question_id}
-          questions={questions}
-          setQuestions={setQuestions}
-          topicId={api.topic_id}
-        />
+        <div style={{ width: "100%", height: "60px" }}>
+          {" "}
+          <Typography
+            style={{
+              marginTop: "0.3rem",
+              marginRight: "180px",
+              fontSize: "medium",
+              fontFamily: "Georgia, serif"
+            }}
+          >
+            {question.question_text}
+          </Typography>
+          <div
+            style={{
+              marginLeft: "25rem",
+              position: "relative",
+              bottom: "20px",
+              width: "30%",
+              height: "50px",
+              display: "flex",
+              justifyContent: "space-around"
+            }}
+          >
+            {" "}
+            <EditQuestion question={question} topicId={api.topic_id} />
+            <DeleteQuestion
+              style={{ paddingBottom: "3px" }}
+              id={question.question_id}
+              questions={questions}
+              setQuestions={setQuestions}
+              topicId={api.topic_id}
+            />
+          </div>
+        </div>
       </div>
     );
   };

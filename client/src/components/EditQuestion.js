@@ -59,6 +59,7 @@ const EditQuestion = ({ question, topicId }) => {
                 type="text"
                 className="form-contol"
                 value={text}
+                style={{ width: "100%" }}
                 onChange={event => setText(event.target.value)}
               />
             </div>
@@ -67,6 +68,7 @@ const EditQuestion = ({ question, topicId }) => {
                 type="button"
                 className="btn btn-danger"
                 data-dismiss="modal"
+                style={{ fontSize: "small" }}
                 onClick={() => editQuestionText(topicId, question.question_id)}
               >
                 Edit
