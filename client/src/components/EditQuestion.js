@@ -38,7 +38,10 @@ const EditQuestion = ({ question, topicId }) => {
         id={`id${question.question_id}`}
         onSubmit={() => setText(question.question_text)}
       >
-        <div className="modal-dialog">
+        <div
+          className="modal-dialog"
+          style={{ backgroundColor: "yellow", marginTop: "10rem" }}
+        >
           <div className="modal-content">
             <div className="modal-header">
               <h4 className="modal-title">Edit question</h4>

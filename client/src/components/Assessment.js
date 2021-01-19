@@ -112,15 +112,6 @@ const Assessment = () => {
       >
         {api.topic_name} Assessment
       </Typography>
-      <a
-        style={{
-          marginBottom: "0.2rem",
-          marginRight: "430px"
-        }}
-        href={api.document_link}
-      >
-        {api.document_name}
-      </a>
       <Typography
         style={{
           marginTop: "0.5rem",

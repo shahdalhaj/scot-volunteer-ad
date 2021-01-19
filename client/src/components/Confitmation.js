@@ -9,7 +9,8 @@ const confirmation = () => {
         alignItems: "center",
         flexDirection: "column",
         maxWidth: "38rem",
-        marginLeft: "23rem"
+        marginLeft: "23rem",
+        height: "68vh"
       }}
     >
       <Typography>

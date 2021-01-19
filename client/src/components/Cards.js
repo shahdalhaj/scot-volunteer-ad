@@ -164,8 +164,8 @@ const Cards = props => {
   };
 
   return (
-    <div>
-      <div style={{}}>{title()}</div>
+    <div style={{ marginTop: "2rem", height: "66vh" }}>
+      <div>{title()}</div>
 
       <div
         style={{
@@ -176,8 +176,7 @@ const Cards = props => {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "row",
-          flexWrap: "wrap",
-          marginTop: 20
+          flexWrap: "wrap"
         }}
       >
         {Object.values(props.data).map(renderCards)}

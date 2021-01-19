@@ -77,92 +77,95 @@ function Login() {
     return <div>You are already logged in.</div>;
   } else
     return (
-      <Grid
-        container
-        component="main"
-        style={{
-          height: "30vh",
-          marginBottom: "10rem",
-          marginTop: "6rem",
-          marginLeft: "27rem"
-        }}
-      >
-        <CssBaseline />
+      <div style={{ height: "64vh" }}>
+        {" "}
         <Grid
-          item
-          xs={12}
-          sm={4}
-          md={4}
-          component={Paper}
-          elevation={4}
-          square
+          container
+          component="main"
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column"
+            height: "30vh",
+            marginBottom: "10rem",
+            marginTop: "2rem",
+            marginLeft: "27rem"
           }}
         >
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Log in
-          </Typography>
-
-          {error ? (
-            <Typography variant="subtitle2" color="error">
-              Please Enter a valid username and password! Try again.
+          <CssBaseline />
+          <Grid
+            item
+            xs={12}
+            sm={4}
+            md={4}
+            component={Paper}
+            elevation={4}
+            square
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column"
+            }}
+          >
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Log in
             </Typography>
-          ) : null}
 
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              onChange={handleChange}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={handleChange}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-              onClick={signIn}
-            >
-              Log In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                {error ? <div>Wrong information. Try again</div> : null}
+            {error ? (
+              <Typography variant="subtitle2" color="error">
+                Please Enter a valid username and password! Try again.
+              </Typography>
+            ) : null}
+
+            <form className={classes.form} noValidate>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                onChange={handleChange}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={handleChange}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="secondary"
+                className={classes.submit}
+                onClick={signIn}
+              >
+                Log In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  {error ? <div>Wrong information. Try again</div> : null}
+                </Grid>
               </Grid>
-            </Grid>
-            <Box mt={5}></Box>
-          </form>
+              <Box mt={5}></Box>
+            </form>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     );
 }
 
