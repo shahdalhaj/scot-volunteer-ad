@@ -7,8 +7,6 @@ import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 
 const Topic = () => {
-  let empty = "";
-  let newLine = empty.split("\n");
   let { id } = useParams();
   let [api, setApi] = useState([]);
   let [questionState, setQuestionState] = useState(false);
@@ -46,6 +44,7 @@ const Topic = () => {
   const submitQuestion = () => {
     setQuestionState(!questionState);
   };
+  console.log(api);
   const handleNewQuestion = event => {
     event.preventDefault();
     setQuestionState(!questionState);
@@ -68,6 +67,9 @@ const Topic = () => {
         getAllQuestions();
       });
   };
+
+  const assessmentLink = "http://localhost:3000/assessment";
+
   const renderQuestions = (question, index) => {
     return (
       <div key={index}>
@@ -207,17 +209,11 @@ const Topic = () => {
           }}
         >
           <a
-            href={`mailto:user@gmail.com?cc=user@gmail.com&bcc=user@gmail.com&Subject=${api.topic_name}&body=Hi Volunteer,${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}${newLine} ${newLine}${newLine}${newLine}${newLine}${newLine}${newLine}
+            href={`mailto:refmentor5@gmail.com?cc=refmentor5@gmail.com&bcc=refmentor5@gmail.com&Subject=${api.topic_name}&body=Hi Volunteer,
       Thank you for your interest in volunteering for RefMentors.
-
       We have prepared these list of questions for you to take for ${api.topic_name} 
-      Here is the questions :
-      Correct this Question,(What was she doing nowadays?)
-      when we need to use Past perfect?
-      what is the past tens of the verb do?
-
-      Please take the survey within 7 days at the following link: www.English.com.
-
+     Heres the document link for ${api.topic_name}:${api.document_link}
+      Please take the survey within 7 days at the following link:   ${assessmentLink}
       Once completed, we will call or email you to discus next steps.
       Any questions please let us know .
       RefMentors `}
