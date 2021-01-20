@@ -114,6 +114,7 @@ function NewTopic() {
           name="documentName"
           value={newTopic.documentName}
         />
+        <div></div>
         <div
           style={{
             height: "20px"
